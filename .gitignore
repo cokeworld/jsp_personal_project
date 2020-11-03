@@ -1,7 +1,3 @@
-
-# Created by https://www.toptal.com/developers/gitignore/api/eclipse
-# Edit at https://www.toptal.com/developers/gitignore?templates=eclipse
-
 ### Eclipse ###
 .metadata
 bin/
@@ -15,6 +11,8 @@ local.properties
 .loadpath
 .recommenders
 .classpath
+*.class
+.project
 
 # External tool builders
 .externalToolBuilders/
@@ -69,8 +67,6 @@ local.properties
 # Spring Boot Tooling
 .sts4-cache/
 
-# End of https://www.toptal.com/developers/gitignore/api/eclipse
-
+# git
 .gitattributes
-.project
-*.class
+
