@@ -5,11 +5,15 @@ import java.sql.Timestamp;
 public class ZangtuVo {
 	private String id;
 	private String passwd;
+	private String subject;
+	private String content;
 	private String name;
 	private Integer age;
 	private String gender;
 	private String email;   // 이메일 주소
+	private int readCount;
 	private Timestamp regDate;
+	
 	public String getId() {
 		return id;
 	}
@@ -53,11 +57,31 @@ public class ZangtuVo {
 		this.regDate = regDate;
 	}
 	
+	public String getSubject() {
+		return subject;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	
+	public int getReadCount() {
+		return readCount;
+	}
+	public void setReadCount(int readCount) {
+		this.readCount = readCount;
+	}
 	@Override
 	public String toString() {
-		return "CoupangVo [id=" + id + ", passwd=" + passwd + ", name=" + name + ", age=" + age + ", gender=" + gender
-				+ ", email=" + email + ", regDate=" + regDate + "]";
+		return "ZangtuVo [id=" + id + ", passwd=" + passwd + ", subject=" + subject + ", content=" + content + ", name="
+				+ name + ", age=" + age + ", gender=" + gender + ", email=" + email + ", regDate=" + regDate + "]";
 	}
+
 	
 	
 }

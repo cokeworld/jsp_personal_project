@@ -42,10 +42,10 @@
             </div>
         </section>
         <ul class="top_section2">
-            <li class="rocket_del"><i class="fas fa-rocket"></i>오늘의 추천중고</li>
-            <li class="rocket_fresh"><i class="fas fa-rocket"></i>내 주변 판매자</li>
-            <li class="event">이벤트/쿠폰</li>
-            <li class="booking">무료나눔</li>
+            <li class="list"><a href="list.jsp"><i class="fas fa-rocket">중고 게시물 둘러보기</i></a></li>
+            <li class="list">중고 게시물 등록/판매</li>
+            <li class="list"><i class="fas fa-rocket"></i>내 주변 판매자</li>
+            <li class="list">이벤트/쿠폰</li>
           </ul>
         
         <section class="photo_section">
