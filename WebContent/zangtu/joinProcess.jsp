@@ -9,7 +9,7 @@ String id = request.getParameter("id");
 String passwd = request.getParameter("passwd");
 String name = request.getParameter("name");
 
-ZangtuDao zangtudao = ZangtuDao.getInstance();
+ZangtuDao zangtudao = new ZangtuDao();
 ZangtuVo zangtuVo = new ZangtuVo();
 zangtuVo.setId(id);
 zangtuVo.setPasswd(passwd);
