@@ -2,7 +2,7 @@ package com.vo;
 
 import java.sql.Timestamp;
 
-public class ZangtuVo {
+public class UserVo {
 	private String id;
 	private String passwd;
 	private String subject;
