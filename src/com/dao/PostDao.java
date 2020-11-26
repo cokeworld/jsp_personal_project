@@ -153,6 +153,37 @@ public class PostDao {
 		return postList;
 	}
 	
+	
+	public int getNextNum() {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int nextNum = 0;
+		String sql = "";
+		
+		try {
+			con = JdbcUtils.getConnection();
+			
+			sql  = "SELECT IFNULL(MAX(num), 0) + 1 AS next_num ";
+			sql += "FROM board ";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				nextNum = rs.getInt("next_num");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtils.close(con, pstmt, rs);
+		}
+		return nextNum;
+	} // getNextNum()
+	
+	
 	// 전체글갯수 가져오기
 	public int getFemaleCount() {
 		Connection con = null;
@@ -194,6 +225,7 @@ public class PostDao {
 			con = JdbcUtils.getConnection();
 			
 			sql  = "SELECT * ";
+			// table is female
 			sql += "FROM female ";
 			sql += "LIMIT ?, ? ";
 			
@@ -222,7 +254,7 @@ public class PostDao {
 		return list;
 	} // getPosts()
 	
-	public void addPost(String category, PostVo postVo) {
+	public void addPost(PostVo postVo) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
@@ -231,8 +263,8 @@ public class PostDao {
 		try {
 			con = JdbcUtils.getConnection();
 			
-			sql  = "INSERT INTO female (id, title, price, view, location, description, seller) ";
-			sql += "VALUES (?, ?, ?, ?, ?, ?, ?) ";
+			sql  = "INSERT INTO female (id, title, price, view, location, description, seller, passwd, file) ";
+			sql += "VALUES (?, ?, ?, ?, ?, ?, ?, ? ,?) ";
 			
 			pstmt = con.prepareStatement(sql);
 //			pstmt.setString(1, category);
@@ -243,6 +275,8 @@ public class PostDao {
 			pstmt.setString(5, postVo.getLocation());
 			pstmt.setString(6, postVo.getDescription());
 			pstmt.setString(7, postVo.getSeller());
+			pstmt.setString(8, postVo.getPasswd());
+			pstmt.setString(9, postVo.getFile());
 
 			// 실행
 			pstmt.executeUpdate();
@@ -254,15 +288,38 @@ public class PostDao {
 		}
 	} // addPost()
 	
+	
+	public static void deleteAllFemale() {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = JdbcUtils.getConnection();
+			
+			String sql = "";
+			sql += "DELETE FROM female ";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtils.close(con, pstmt);
+		}
+	} // deleteAll()
+	
 
 
 public static void main(String[] args) {
+	
+	deleteAllFemale();
 	
 	PostDao postDao = new PostDao();
 	String category = "female";
 	for(int i=0; i<100; i++) {
 		PostVo postVo = new PostVo();
-		
+		int num = postDao.getNextNum();
 		postVo.setId(i);
 		postVo.setTitle("자전거 팔아요~" + i);
 		postVo.setPrice(i*100);
@@ -270,10 +327,12 @@ public static void main(String[] args) {
 		postVo.setLocation("부산");
 		postVo.setDescription(i+"개월 사용한 삼천리 " + i + "모델 급처요~");
 		postVo.setSeller("꾀돌이"+i);
+		postVo.setPasswd("1");
+		postVo.setFile("logo.png");
 		
 		System.out.println(postVo);
 		
-		postDao.addPost(category, postVo);
+		postDao.addPost(postVo);
 		
 	}
 }

@@ -8,8 +8,22 @@ public class PostVo {
 	private String location;
 	private String description;
 	private String seller;
+	private String passwd;
+	private String file;
 	
 	
+	public String getPasswd() {
+		return passwd;
+	}
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
+	}
+	public String getFile() {
+		return file;
+	}
+	public void setFile(String file) {
+		this.file = file;
+	}
 	public int getId() {
 		return id;
 	}
@@ -52,12 +66,14 @@ public class PostVo {
 	public void setSeller(String seller) {
 		this.seller = seller;
 	}
-	
 	@Override
 	public String toString() {
-		return "PostVo [title=" + title + ", price=" + price + ", view=" + view + ", location=" + location
-				+ ", description=" + description + ", seller=" + seller + "]";
+		return "PostVo [id=" + id + ", title=" + title + ", price=" + price + ", view=" + view + ", location="
+				+ location + ", description=" + description + ", seller=" + seller + ", passwd=" + passwd + ", file="
+				+ file + "]";
 	}
+	
+
 	
 	
 	
