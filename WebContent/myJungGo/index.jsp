@@ -1,5 +1,16 @@
+<%@page import="com.dao.PostDao"%>
+<%@page import="com.vo.PostVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+PostDao postDao = new PostDao();
+//글목록 가져오기
+int startPost = 1;
+int postSize = 4;
+List<PostVo> postList = null;
+
+%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -184,32 +195,35 @@
                 <div class="row">
                     <div class="col-md-6">
                         <h2>여성의류 <input type="button" value="더보기" onclick="location.href='category_female.jsp'"></h2>
-                        
                         <div class="row cn-slider">
+<!--                         사진 시작 -->
+                        <%
+                        postList = postDao.getFemalePosts(startPost, postSize);
+                        for (PostVo postVo : postList) {
+                        %>
                             <div class="col-md-6">
                                 <div class="cn-img">
-                                    <img src="img/news-350x223-1.jpg" />
+                                <%
+                      			String file = postVo.getFile();
+								if(file != null) {
+								%>
+									<img src="../upload/<%=file %>" width="194" height="194" alt="상품 이미지">
+								<%	
+								} else {
+									%>
+									<img src="img/no-image.png" width="194" height="194" alt="No Image">
+									<%
+								}
+								%>
                                     <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
+                                        <a href=""><%=postVo.getTitle() %></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-2.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-3.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>
+                            <%
+                        	}
+                            %>
+<!--                             사진 끝 -->
                         </div>
                     </div>
                     <div class="col-md-6">
