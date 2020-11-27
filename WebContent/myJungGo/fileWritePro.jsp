@@ -16,7 +16,8 @@
 // 5. 파일명 중복될때 이름변경규칙 가진 객체를 전달
 
 // 업로드 할 실제 물리적 경로 구하기
-String realPath = application.getRealPath("/upload");
+// String realPath = application.getRealPath("/upload");
+String realPath = request.getServletContext().getRealPath("/upload");
 System.out.println("realPath : " + realPath);
 
 // 파일 업로드 하기
@@ -70,7 +71,7 @@ postVo.setView(0);  // 조회수
 postDao.addPost(postVo);
 
 // 글내용 상세보기 화면 content.jsp로 이동
-response.sendRedirect("index.jsp");
+response.sendRedirect("category_female.jsp");
 %>
 
 

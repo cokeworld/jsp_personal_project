@@ -165,8 +165,8 @@ public class PostDao {
 		try {
 			con = JdbcUtils.getConnection();
 			
-			sql  = "SELECT IFNULL(MAX(num), 0) + 1 AS next_num ";
-			sql += "FROM board ";
+			sql  = "SELECT IFNULL(MAX(id), 0) + 1 AS next_num ";
+			sql += "FROM female ";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -227,6 +227,7 @@ public class PostDao {
 			sql  = "SELECT * ";
 			// table is female
 			sql += "FROM female ";
+			sql += "ORDER BY id DESC ";
 			sql += "LIMIT ?, ? ";
 			
 			pstmt = con.prepareStatement(sql);
@@ -237,12 +238,15 @@ public class PostDao {
 			
 			while (rs.next()) {
 				PostVo postVo = new PostVo();
+				postVo.setId(rs.getInt("id"));
 				postVo.setTitle(rs.getString("title"));
 				postVo.setPrice(rs.getInt("price"));
 				postVo.setView(rs.getInt("view"));
 				postVo.setLocation(rs.getString("location"));
 				postVo.setDescription(rs.getString("description"));
 				postVo.setSeller(rs.getString("seller"));
+				postVo.setPasswd(rs.getString("passwd"));
+				postVo.setFile(rs.getString("file"));
 				
 				list.add(postVo);
 			}
@@ -316,11 +320,10 @@ public static void main(String[] args) {
 	deleteAllFemale();
 	
 	PostDao postDao = new PostDao();
-	String category = "female";
 	for(int i=0; i<100; i++) {
 		PostVo postVo = new PostVo();
-		int num = postDao.getNextNum();
-		postVo.setId(i);
+		int nextNum = postDao.getNextNum();
+		postVo.setId(nextNum);
 		postVo.setTitle("자전거 팔아요~" + i);
 		postVo.setPrice(i*100);
 		postVo.setView(0);
@@ -328,7 +331,6 @@ public static void main(String[] args) {
 		postVo.setDescription(i+"개월 사용한 삼천리 " + i + "모델 급처요~");
 		postVo.setSeller("꾀돌이"+i);
 		postVo.setPasswd("1");
-		postVo.setFile("logo.png");
 		
 		System.out.println(postVo);
 		
