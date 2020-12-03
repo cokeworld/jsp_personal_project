@@ -183,13 +183,14 @@ if (count > 0) {
 		<%
 			if (count > 0) {
 			for (PostVo postVo : postList) {
-				String file = postVo.getFile();
 
 		%>
 					<div class="product">
 						<a href='content.jsp' class="">
 							<div class="post_image">
 							<%
+							String file = postVo.getFile();
+							
 							if(file != null) {
 							%>
 								<img src="../upload/<%=file %>" width="194" height="194" alt="상품 이미지">

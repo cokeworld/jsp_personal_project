@@ -1,6 +1,6 @@
-<%@page import="com.vo.ZangtuVo"%>
+<%@page import="com.vo.UserVo"%>
 <%@page import="java.util.List"%>
-<%@page import="com.dao.ZangtuDao"%>
+<%@page import="com.dao.PostDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -24,9 +24,9 @@
 		</thead>
 		<tbody>
 <%
-ZangtuDao zangtuDao = new ZangtuDao();
-List<ZangtuVo> itemList = zangtuDao.getPostList();
-for(ZangtuVo zangtuVo : itemList) {
+	PostDao zangtuDao = new PostDao();
+List<UserVo> itemList = zangtuDao.getPostList();
+for(UserVo zangtuVo : itemList) {
 %>
 			<tr>
 				<td>글번호 넣자</td>

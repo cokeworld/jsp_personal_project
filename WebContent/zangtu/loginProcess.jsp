@@ -1,13 +1,13 @@
-<%@page import="com.dao.ZangtuDao"%>
+<%@page import="com.dao.PostDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-request.setCharacterEncoding("utf-8");
+	request.setCharacterEncoding("utf-8");
 
 String id = request.getParameter("id");
 String passwd = request.getParameter("passwd");
 
-ZangtuDao zangtuDao = new ZangtuDao();
+PostDao zangtuDao = new PostDao();
 
 //1: id passwd 인증성공
 //0: id 틀림
@@ -16,7 +16,7 @@ int checkUser = zangtuDao.checkUser(id, passwd);
 
 if(checkUser==1) {
 	session.setAttribute("id", id);
-	%>
+%>
 	<script>
 	alert('로그인 성공');
 	location.href = 'index.jsp';
