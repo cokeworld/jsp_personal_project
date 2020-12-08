@@ -194,11 +194,11 @@ List<PostVo> postList = null;
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <h2>여성의류 <input type="button" value="더보기" onclick="location.href='category_female.jsp'"></h2>
+                        <h2>여성의류 <input type="button" value="전체보기" onclick="location.href='category_female.jsp'"></h2>
                         <div class="row cn-slider">
 <!--                         사진 시작 -->
                         <%
-                        postList = postDao.getFemalePosts(startPost, postSize);
+                        postList = postDao.getPostList("female", startPost, postSize);
                         for (PostVo postVo : postList) {
                         %>
                             <div class="col-md-6">
@@ -227,7 +227,7 @@ List<PostVo> postList = null;
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h2>패션잡화 <input type="button" value="더보기" onclick="location.href='category_fashion.jsp'"></h2>
+                        <h2>패션잡화 <input type="button" value="전체보기" onclick="location.href='category_fashion.jsp'"></h2>
                         <div class="row cn-slider">
                             <div class="col-md-6">
                                 <div class="cn-img">
@@ -265,7 +265,7 @@ List<PostVo> postList = null;
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <h2>남성의류 <input type="button" value="더보기" onclick="location.href='category_male.jsp'"></h2>
+                        <h2>남성의류 <input type="button" value="전체보기" onclick="location.href='category_male.jsp'"></h2>
                         <div class="row cn-slider">
                             <div class="col-md-6">
                                 <div class="cn-img">
@@ -294,7 +294,7 @@ List<PostVo> postList = null;
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h2>디지털/가전 <input type="button" value="더보기" onclick="location.href='categoryPages/category_digital.jsp'"></h2>
+                        <h2>디지털/가전 <input type="button" value="전체보기" onclick="location.href='categoryPages/category_digital.jsp'"></h2>
                         <div class="row cn-slider">
                             <div class="col-md-6">
                                 <div class="cn-img">

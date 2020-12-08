@@ -57,7 +57,7 @@ postVo.setFile(multi.getFilesystemName("filename"));
 PostDao postDao = new PostDao();
 
 // 글번호 가져와서 VO에 저장
-int nextNum = postDao.getNextNum();
+int nextNum = postDao.getNextNum("female");
 postVo.setId(nextNum);
 
 postVo.setView(0);  // 조회수
@@ -68,7 +68,7 @@ postVo.setView(0);  // 조회수
 // boardVo.setReSeq(0); // 주글일때는 글그룹 내에서 순번이 0 (첫번째)
 
 // 주글 등록하기
-postDao.addPost(postVo);
+postDao.addPost("female", postVo);
 
 // 글내용 상세보기 화면 content.jsp로 이동
 response.sendRedirect("category_female.jsp");
