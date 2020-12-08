@@ -37,27 +37,6 @@ public class PostDao {
 		}
 	}
 	
-	public static void addFemale(PostVo postVo) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		String sql = "";
-		
-		try {
-			con = JdbcUtils.getConnection();
-			sql = "INSERT INTO female(title, price, view, location, description, seller) "
-					+ "VALUES(?, ? , ?)";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, postVo.getTitle());
-			pstmt.setInt(2, postVo.getPrice());
-			pstmt.setInt(3, postVo.getView());
-			pstmt.setString(4, postVo.getLocation());
-			pstmt.setString(5, postVo.getDescription());
-			pstmt.setString(6, postVo.getSeller());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
 	public int checkDuplicatedId(String id) {
 		// 1 = 중복, 0 = 중복x
 		int duplication = 1;
@@ -122,98 +101,8 @@ public class PostDao {
 		}
 		return checkCount;
 	}
-	
-	public List<UserVo> getPostList() {
-		List<UserVo> postList = new ArrayList<>();
-		
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		String sql = "";
-		
-		try {
-			con = JdbcUtils.getConnection();
-			sql = "SELECT * FROM user";
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				UserVo vo = new UserVo();
-				vo.setName(rs.getString("name"));
-				vo.setSubject(rs.getString("subject"));
-				vo.setContent(rs.getString("name"));
-				vo.setReadCount(rs.getInt("readCount"));
-				postList.add(vo);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			JdbcUtils.close(con, pstmt, rs);
-		}
-		return postList;
-	}
-	
-	
-	public int getNextNum() {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		int nextNum = 0;
-		String sql = "";
-		
-		try {
-			con = JdbcUtils.getConnection();
-			
-			sql  = "SELECT IFNULL(MAX(id), 0) + 1 AS next_num ";
-			sql += "FROM female ";
-			
-			pstmt = con.prepareStatement(sql);
-			
-			rs = pstmt.executeQuery();
-			
-			if (rs.next()) {
-				nextNum = rs.getInt("next_num");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			JdbcUtils.close(con, pstmt, rs);
-		}
-		return nextNum;
-	} // getNextNum()
-	
-	
-	// 전체글갯수 가져오기
-	public int getFemaleCount() {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		int count = 0;
-		String sql = "";
-		
-		try {
-			con = JdbcUtils.getConnection();
-			
-			sql = "SELECT COUNT(*) FROM female";
-			
-			pstmt = con.prepareStatement(sql);
-			
-			rs = pstmt.executeQuery();
-			
-			if (rs.next()) {
-				count = rs.getInt(1);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			JdbcUtils.close(con, pstmt, rs);
-		}
-		return count;
-	} // getFemaleCount()
-	
-	public List<PostVo> getFemalePosts(int startRow, int pageSize) {
+
+	public List<PostVo> getPostList(String tableName, int startRow, int pageSize) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -225,8 +114,7 @@ public class PostDao {
 			con = JdbcUtils.getConnection();
 			
 			sql  = "SELECT * ";
-			// table is female
-			sql += "FROM female ";
+			sql += "FROM " + tableName + " ";
 			sql += "ORDER BY id DESC ";
 			sql += "LIMIT ?, ? ";
 			
@@ -257,8 +145,70 @@ public class PostDao {
 		}
 		return list;
 	} // getPosts()
+	public int getNextNum(String tableName) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int nextNum = 0;
+		String sql = "";
+		
+		try {
+			con = JdbcUtils.getConnection();
+			
+			sql  = "SELECT IFNULL(MAX(id), 0) + 1 AS next_num ";
+			sql += "FROM " + tableName;
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				nextNum = rs.getInt("next_num");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtils.close(con, pstmt, rs);
+		}
+		return nextNum;
+	} // getNextNum()
 	
-	public void addPost(PostVo postVo) {
+	
+	// 전체글갯수 가져오기
+	public int getPostsCount(String tableName) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int count = 0;
+		String sql = "";
+		
+		try {
+			con = JdbcUtils.getConnection();
+			
+			sql = "SELECT COUNT(*) FROM " + tableName;
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtils.close(con, pstmt, rs);
+		}
+		return count;
+	} // getPostsCount()
+	
+
+	
+
+	// addPost
+	public void addPost(String tableName, PostVo postVo) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
@@ -267,11 +217,10 @@ public class PostDao {
 		try {
 			con = JdbcUtils.getConnection();
 			
-			sql  = "INSERT INTO female (id, title, price, view, location, description, seller, passwd, file) ";
+			sql  = "INSERT INTO " + tableName + " (id, title, price, view, location, description, seller, passwd, file) ";
 			sql += "VALUES (?, ?, ?, ?, ?, ?, ?, ? ,?) ";
 			
 			pstmt = con.prepareStatement(sql);
-//			pstmt.setString(1, category);
 			pstmt.setInt(1, postVo.getId());
 			pstmt.setString(2, postVo.getTitle());
 			pstmt.setInt(3, postVo.getPrice());
@@ -282,7 +231,6 @@ public class PostDao {
 			pstmt.setString(8, postVo.getPasswd());
 			pstmt.setString(9, postVo.getFile());
 
-			// 실행
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
@@ -290,19 +238,43 @@ public class PostDao {
 		} finally {
 			JdbcUtils.close(con, pstmt);
 		}
-	} // addPost()
+	} // addPost
 	
-	
-	public static void deleteAllFemale() {
+	public void deleteAll(String tableName) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
 		try {
 			con = JdbcUtils.getConnection();
 			
-			String sql = "";
-			sql += "DELETE FROM female ";
+			String sql = "DELETE FROM " + tableName;
 			pstmt = con.prepareStatement(sql);
+			
+			pstmt.executeUpdate();
+			System.out.println(tableName + "테이블 데이터 삭제완료");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtils.close(con, pstmt);
+		}
+	} // deleteAll
+	
+	// updatePostView
+	public void updatePostView(String boardName, int postNum) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = "";
+		
+		try {
+			con = JdbcUtils.getConnection();
+			
+			sql  = "UPDATE " + boardName + " ";
+			sql += "SET view = view + 1 ";
+			sql += "WHERE id = ? ";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, postNum);
 			
 			pstmt.executeUpdate();
 			
@@ -311,18 +283,58 @@ public class PostDao {
 		} finally {
 			JdbcUtils.close(con, pstmt);
 		}
-	} // deleteAll()
+	} // updatePostView
 	
+	// getPostByNum
+	public PostVo getPostByNum(String tableName, int postNum) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		PostVo postVo = null;
+		String sql = "";
+		
+		try {
+			con = JdbcUtils.getConnection();
+			
+			sql = "SELECT * FROM " + tableName + " " + "WHERE id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, postNum);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				postVo = new PostVo();
+				
+				postVo.setId(rs.getInt("id"));
+				postVo.setTitle(rs.getString("title"));
+				postVo.setPrice(rs.getInt("price"));
+				postVo.setView(rs.getInt("view"));
+				postVo.setLocation(rs.getString("location"));
+				postVo.setDescription(rs.getString("description"));
+				postVo.setSeller(rs.getString("seller"));
+				postVo.setPasswd(rs.getString("passwd"));
+				postVo.setFile(rs.getString("file"));
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtils.close(con, pstmt, rs);
+		}
+		return postVo;
+	} //getPostByNum
 
-
+	
+// main method
 public static void main(String[] args) {
 	
-	deleteAllFemale();
-	
 	PostDao postDao = new PostDao();
+	postDao.deleteAll("female");
 	for(int i=0; i<100; i++) {
 		PostVo postVo = new PostVo();
-		int nextNum = postDao.getNextNum();
+		int nextNum = postDao.getNextNum("female");
 		postVo.setId(nextNum);
 		postVo.setTitle("자전거 팔아요~" + i);
 		postVo.setPrice(i*100);
@@ -334,8 +346,8 @@ public static void main(String[] args) {
 		
 		System.out.println(postVo);
 		
-		postDao.addPost(postVo);
+		postDao.addPost("female", postVo);
 		
 	}
-}
+} // main method
 }
