@@ -15,7 +15,7 @@ List<PostVo> postList = null;
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Bootstrap News Template - Free HTML Templates</title>
+        <title>나만의 중고</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="Bootstrap News Template - Free HTML Templates" name="keywords">
         <meta content="Bootstrap News Template - Free HTML Templates" name="description">
@@ -198,7 +198,7 @@ List<PostVo> postList = null;
                         <div class="row cn-slider">
 <!--                         사진 시작 -->
                         <%
-                        postList = postDao.getPostList("female", startPost, postSize);
+                        postList = postDao.getPostList(startPost, postSize);
                         for (PostVo postVo : postList) {
                         %>
                             <div class="col-md-6">

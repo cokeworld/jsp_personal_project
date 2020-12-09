@@ -6,11 +6,12 @@
 <%
 request.setCharacterEncoding("utf-8");
 
+String category = "female";
 // DAO 객체 준비
 PostDao postDao = new PostDao();
 
 // 전체 글갯수 가져오기
-int count = postDao.getPostsCount("female");
+int count = postDao.getPostsCount();
 
 // 한페이지당 보여줄 글갯수 설정
 int pageSize = 10;
@@ -36,7 +37,7 @@ if (count > 0) {
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Bootstrap News Template - Free HTML Templates</title>
+<title>여성 의류</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="Bootstrap News Template - Free HTML Templates"
 	name="keywords">

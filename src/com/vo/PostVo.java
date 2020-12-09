@@ -10,8 +10,16 @@ public class PostVo {
 	private String seller;
 	private String passwd;
 	private String file;
+	private String category;
 	
 	
+	
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
 	public String getPasswd() {
 		return passwd;
 	}

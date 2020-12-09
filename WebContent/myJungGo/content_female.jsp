@@ -12,10 +12,10 @@
 	PostDao	postDao = new PostDao();
 	
 	// 조회수 1 증가하기
-	postDao.updatePostView("female", postNum);
+	postDao.updatePostView(postNum);
 	
 	// 글번호에 해당하는 글 한개 가져오기
-	PostVo postVo = postDao.getPostByNum("female",postNum);
+	PostVo postVo = postDao.getPostByNum(postNum);
 %>
 <!DOCTYPE html>
 <html lang="en">
