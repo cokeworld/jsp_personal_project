@@ -74,14 +74,10 @@ if (count > 0) {
 							if(file != null) {
 								
 								// Start makeSampleImages
-								if(file.equals("sample1")) {
+								if(file.equals("sample4")) {
 								%>
-									<img src="img/sample1.png" width="194" height="194" alt="상품 이미지">
+									<img src="img/sample4.png" width="194" height="194" alt="상품 이미지">
 								<%
-								} else if(file.equals("sample2")) {
-									%>
-										<img src="img/sample2.png" width="194" height="194" alt="상품 이미지">
-									<%	
 								} else {
 								// End makeSampleImages
 								

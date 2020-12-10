@@ -25,14 +25,14 @@ List<PostVo> postList = null;
 		<%-- topNews 영역 --%>
 		<jsp:include page="/include/topNews.jsp" />
 
-        <!-- Category News Start-->
+        <!-- Category News Row1 Start-->
         <div class="cat-news">
             <div class="container">
                 <div class="row">
+                
                     <div class="col-md-6">
                         <h2>여성의류 <input type="button" value="전체보기" onclick="location.href='category_female.jsp'"></h2>
                         <div class="row cn-slider">
-<!--                         사진 시작 -->
                         <%
                         postList = postDao.getPostList("female", startPost, postSize);
                         for (PostVo postVo : postList) {
@@ -48,10 +48,6 @@ List<PostVo> postList = null;
 									%>
 										<img src="img/sample1.png" width="194" height="194" alt="상품 이미지">
 									<%
-									} else if(file.equals("sample2")) {
-										%>
-											<img src="img/sample2.png" width="194" height="194" alt="상품 이미지">
-										<%	
 									} else {
 									// End makeSampleImages
 									
@@ -73,109 +69,147 @@ List<PostVo> postList = null;
                             <%
                         	}
                             %>
-<!--                             사진 끝 -->
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    
+					<div class="col-md-6">
                         <h2>액세서리 <input type="button" value="전체보기" onclick="location.href='category_accessory.jsp'"></h2>
                         <div class="row cn-slider">
+                        <%
+                        postList = postDao.getPostList("accessory", startPost, postSize);
+                        for (PostVo postVo : postList) {
+                        %>
                             <div class="col-md-6">
                                 <div class="cn-img">
-                                    <img src="img/news-350x223-4.jpg" />
+                                <%
+                      			String file = postVo.getFile();
+								if(file != null) {
+									
+									// Start makeSampleImages
+									if(file.equals("sample2")) {
+									%>
+										<img src="img/sample2.jpg" width="194" height="194" alt="상품 이미지">
+									<%
+									} else {
+									// End makeSampleImages
+									
+								%>
+									<img src="../upload/<%=file %>" width="194" height="194" alt="상품 이미지">
+								<%	
+									}
+								} else {
+									%>
+									<img src="img/no-image.png" width="194" height="194" alt="No Image">
+									<%
+								}
+								%>
                                     <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
+                                        <a href=""><%=postVo.getTitle() %></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-5.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-1.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>
+                            <%
+                        	}
+                            %>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Category News End-->
-
-        <!-- Category News Start-->
+		<!-- Category News Row1 End-->
+		
+		<!-- Category News Row2 Start-->
         <div class="cat-news">
             <div class="container">
                 <div class="row">
+                
                     <div class="col-md-6">
                         <h2>남성의류 <input type="button" value="전체보기" onclick="location.href='category_male.jsp'"></h2>
                         <div class="row cn-slider">
+                        <%
+                        postList = postDao.getPostList("male", startPost, postSize);
+                        for (PostVo postVo : postList) {
+                        %>
                             <div class="col-md-6">
                                 <div class="cn-img">
-                                    <img src="img/news-350x223-5.jpg" />
+                                <%
+                      			String file = postVo.getFile();
+								if(file != null) {
+									
+									// Start makeSampleImages
+									if(file.equals("sample3")) {
+									%>
+										<img src="img/sample3.jpg" width="194" height="194" alt="상품 이미지">
+									<%
+									} else {
+									// End makeSampleImages
+									
+								%>
+									<img src="../upload/<%=file %>" width="194" height="194" alt="상품 이미지">
+								<%	
+									}
+								} else {
+									%>
+									<img src="img/no-image.png" width="194" height="194" alt="No Image">
+									<%
+								}
+								%>
                                     <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
+                                        <a href=""><%=postVo.getTitle() %></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-4.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-3.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>
+                            <%
+                        	}
+                            %>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    
+					<div class="col-md-6">
                         <h2>디지털/가전 <input type="button" value="전체보기" onclick="location.href='category_digital.jsp'"></h2>
                         <div class="row cn-slider">
+                        <%
+                        postList = postDao.getPostList("digital", startPost, postSize);
+                        for (PostVo postVo : postList) {
+                        %>
                             <div class="col-md-6">
                                 <div class="cn-img">
-                                    <img src="img/news-350x223-2.jpg" />
+                                <%
+                      			String file = postVo.getFile();
+								if(file != null) {
+									
+									// Start makeSampleImages
+									if(file.equals("sample4")) {
+									%>
+										<img src="img/sample4.png" width="194" height="194" alt="상품 이미지">
+									<%
+									} else {
+									// End makeSampleImages
+									
+								%>
+									<img src="../upload/<%=file %>" width="194" height="194" alt="상품 이미지">
+								<%	
+									}
+								} else {
+									%>
+									<img src="img/no-image.png" width="194" height="194" alt="No Image">
+									<%
+								}
+								%>
                                     <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
+                                        <a href=""><%=postVo.getTitle() %></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-1.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/news-350x223-3.jpg" />
-                                    <div class="cn-title">
-                                        <a href="">Lorem ipsum dolor sit</a>
-                                    </div>
-                                </div>
-                            </div>
+                            <%
+                        	}
+                            %>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Category News End-->
+        <!-- Category News Row2 End-->
         
         <!-- Tab News Start-->
         <div class="tab-news">

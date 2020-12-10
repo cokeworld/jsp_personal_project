@@ -446,14 +446,14 @@ public class PostDao {
 			PostVo postVo = new PostVo();
 			int nextNum = postDao.getNextNum();
 			postVo.setId(nextNum);
-			postVo.setTitle("나이키 바람막이 " + i +"시리즈 판매");
+			postVo.setTitle("나이키 바람막이 " + i +"시리즈");
 			postVo.setPrice(i*1100);
 			postVo.setView(0);
 			postVo.setLocation("대구");
-			postVo.setDescription("한국에 " + i +"개 있는는 리미티드 에디션 " + i + "모델 급처요~");
+			postVo.setDescription("한국에 " + i +"개 있는 리미티드 에디션 " + i + "모델 급처요~");
 			postVo.setSeller("장형욱"+i);
 			postVo.setPasswd("1");
-			postVo.setFile("sample1");
+			postVo.setFile("sample3");
 			postVo.setCategory("male");
 			
 			System.out.println(postVo);
@@ -465,14 +465,14 @@ public class PostDao {
 			PostVo postVo = new PostVo();
 			int nextNum = postDao.getNextNum();
 			postVo.setId(nextNum);
-			postVo.setTitle("아이폰 " + i + " pro");
+			postVo.setTitle("아이폰 " + i + " Pro");
 			postVo.setPrice(i*1000);
 			postVo.setView(0);
 			postVo.setLocation("서울");
-			postVo.setDescription("아이폰" + i + " pro 싸게팝니다. " + "☆직거래 환영☆");
+			postVo.setDescription("아이폰" + i + " Pro 싸게팝니다. " + "☆직거래 환영☆");
 			postVo.setSeller("박칼린"+i);
 			postVo.setPasswd("1");
-			postVo.setFile("sample2");
+			postVo.setFile("sample4");
 			postVo.setCategory("digital");
 			
 			System.out.println(postVo);
