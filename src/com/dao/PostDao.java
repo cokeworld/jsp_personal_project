@@ -408,13 +408,14 @@ public class PostDao {
 			PostVo postVo = new PostVo();
 			int nextNum = postDao.getNextNum();
 			postVo.setId(nextNum);
-			postVo.setTitle("코튼 자켓팔아요" + i);
+			postVo.setTitle("여자 다운 자켓팔아요" + i);
 			postVo.setPrice(i*100);
 			postVo.setView(0);
 			postVo.setLocation("부산");
-			postVo.setDescription("구찌 코튼자켓 싸게 팝니다. " + i + "모델 급처요~");
+			postVo.setDescription("여자 다운자켓 싸게 팝니다. " + i + "모델 급처요~");
 			postVo.setSeller("최미희"+i);
 			postVo.setPasswd("1");
+			postVo.setFile("sample1");
 			postVo.setCategory("female");
 			
 			System.out.println(postVo);
@@ -433,6 +434,7 @@ public class PostDao {
 			postVo.setDescription(i+"개월 사용한 스왈로브스키 목걸이 " + i + "모델 급처요~");
 			postVo.setSeller("이서연"+i);
 			postVo.setPasswd("1");
+			postVo.setFile("sample2");
 			postVo.setCategory("accessory");
 			
 			System.out.println(postVo);
@@ -451,6 +453,7 @@ public class PostDao {
 			postVo.setDescription("한국에 " + i +"개 있는는 리미티드 에디션 " + i + "모델 급처요~");
 			postVo.setSeller("장형욱"+i);
 			postVo.setPasswd("1");
+			postVo.setFile("sample1");
 			postVo.setCategory("male");
 			
 			System.out.println(postVo);
@@ -469,6 +472,7 @@ public class PostDao {
 			postVo.setDescription("아이폰" + i + " pro 싸게팝니다. " + "☆직거래 환영☆");
 			postVo.setSeller("박칼린"+i);
 			postVo.setPasswd("1");
+			postVo.setFile("sample2");
 			postVo.setCategory("digital");
 			
 			System.out.println(postVo);
