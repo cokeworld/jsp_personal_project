@@ -20,4 +20,4 @@
 <!-- Template Stylesheet -->
 <link href="css/style.css" rel="stylesheet">
 
-<title>내가 찾던 그 상품!, 나만의 중고</title>
+<title>내가 찾던 그 상품! 나만의 중고</title>

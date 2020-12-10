@@ -8,6 +8,7 @@ request.setCharacterEncoding("utf-8");
 
 // category 설정
 String category = "female";
+String categoryKoreanName = "여성의류";
 
 // DAO 객체 준비
 PostDao postDao = new PostDao();
@@ -51,7 +52,7 @@ if (count > 0) {
 		<div class="container">
 				<div class="category_row d-flex justify-content-between">
 					<div class="category_title">
-						여성의류 
+						<%=categoryKoreanName %> 
 <!-- 						<a href='' class="title_button">전체보기</a> -->
 					</div>
 					<input type="button" name="btnFileUpload" value="판매하기" onclick="location.href='fileWriteForm.jsp'">
@@ -65,7 +66,7 @@ if (count > 0) {
 
 		%>
 					<div class="product">
-						<a href='content_female.jsp?postNum=<%=postVo.getId() %>&pageNum=<%=pageNum %>' class="">
+						<a href='content_<%=category %>.jsp?postNum=<%=postVo.getId() %>&pageNum=<%=pageNum %>' class="">
 							<div class="post_image">
 							<%
 							String file = postVo.getFile();
@@ -95,11 +96,13 @@ if (count > 0) {
 							}
 							%>
 							</div>
-							<div class="post_description">
-								<div class="post_title mb-3"><%=postVo.getTitle() %></div>
-								<div class="post_bottom">
+							<div class="post_description mt-3">
+								<div class="post_title mb-1"><%=postVo.getTitle() %></div>
+								<div class="post_middle mb-1">
 									<div class="post_price font-weight-bold"><%=postVo.getPrice() %> 원</div>
+									
 								</div>
+								<div class="post_location"><i class="fas fa-map-marker-alt pr-1"></i><%=postVo.getLocation() %></div>
 							</div>
 						</a>
 					</div>
@@ -142,7 +145,7 @@ if (count > 0) {
 		// [이전]
 		if (startPage > pageBlock) {
 			%>
-				<a href="category_female.jsp?pageNum=<%=startPage - pageBlock %>">[이전]</a>
+				<a href="category_<%=category %>.jsp?pageNum=<%=startPage - pageBlock %>">[이전]</a>
 				<%
 			}
 			
@@ -150,11 +153,11 @@ if (count > 0) {
 			for (int i=startPage; i<=endPage; i++) {
 				if (i == pageNum) {
 					%>
-					<a href="category_female.jsp?pageNum=<%=i %>" class="font-weight-bold"> [<%=i %>]</a>
+					<a href="category_<%=category %>.jsp?pageNum=<%=i %>" class="font-weight-bold"> [<%=i %>]</a>
 					<%
 				} else {
 					%>
-					<a href="category_female.jsp?pageNum=<%=i %>">[<%=i %>]</a>
+					<a href="category_<%=category %>.jsp?pageNum=<%=i %>">[<%=i %>]</a>
 					<%
 				}
 			} // for
@@ -163,7 +166,7 @@ if (count > 0) {
 			// [다음]
 			if (endPage < pageCount) {
 				%>
-				<a href="category_female.jsp?pageNum=<%=startPage + pageBlock %>">[다음]</a>
+				<a href="category_<%=category %>.jsp?pageNum=<%=startPage + pageBlock %>">[다음]</a>
 			<%
 		}
 			%>

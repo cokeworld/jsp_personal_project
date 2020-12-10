@@ -7,8 +7,8 @@
 request.setCharacterEncoding("utf-8");
 
 // category 설정
-String category = "male";
-String categoryKoreanName = "남성의류";
+String category = "accessory";
+String categoryKoreanName = "액세서리";
 
 // DAO 객체 준비
 PostDao postDao = new PostDao();

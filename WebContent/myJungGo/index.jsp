@@ -77,7 +77,7 @@ List<PostVo> postList = null;
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h2>패션잡화 <input type="button" value="전체보기" onclick="location.href='category_fashion.jsp'"></h2>
+                        <h2>액세서리 <input type="button" value="전체보기" onclick="location.href='category_accessory.jsp'"></h2>
                         <div class="row cn-slider">
                             <div class="col-md-6">
                                 <div class="cn-img">
@@ -144,7 +144,7 @@ List<PostVo> postList = null;
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h2>디지털/가전 <input type="button" value="전체보기" onclick="location.href='categoryPages/category_digital.jsp'"></h2>
+                        <h2>디지털/가전 <input type="button" value="전체보기" onclick="location.href='category_digital.jsp'"></h2>
                         <div class="row cn-slider">
                             <div class="col-md-6">
                                 <div class="cn-img">
