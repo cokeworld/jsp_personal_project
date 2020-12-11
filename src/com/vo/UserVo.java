@@ -10,7 +10,7 @@ public class UserVo {
 	private String name;
 	private Integer age;
 	private String gender;
-	private String email;   // 이메일 주소
+	private String email;
 	private int readCount;
 	private Timestamp regDate;
 	

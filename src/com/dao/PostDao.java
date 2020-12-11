@@ -38,7 +38,7 @@ public class PostDao {
 	}
 	
 	public int checkDuplicatedId(String id) {
-		// 1 = Áßº¹, 0 = Áßº¹x
+		// 1 = ì¤‘ë³µ, 0 = ì¤‘ë³µx
 		int duplication = 1;
 		
 		Connection con = null;
@@ -66,9 +66,9 @@ public class PostDao {
 	}
 	
 	public int checkUser(String id, String passwd) {
-		// 1: id passwd ÀÎÁõ¼º°ø
-		// 0: id Æ²¸²
-		// -1: pass Æ²¸²
+		// 1: id passwd ì¸ì¦ì„±ê³µ
+		// 0: id í‹€ë¦¼
+		// -1: pass í‹€ë¦¼
 		
 		int checkCount = 0;
 		Connection con = null;
@@ -91,7 +91,7 @@ public class PostDao {
 					checkCount=-1;
 				}
 			} else {
-				// id Æ²¸²
+				// id í‹€ë¦¼
 				checkCount = 0;
 			}
 		} catch (Exception e) {
@@ -223,7 +223,7 @@ public class PostDao {
 	} // getNextNum()
 	
 	
-	// ÀüÃ¼±Û°¹¼ö °¡Á®¿À±â
+	// ì „ì²´ê¸€ê°¯ìˆ˜ ê°€ì ¸ì˜¤ê¸°
 	public int getPostsCount() {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -302,7 +302,7 @@ public class PostDao {
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.executeUpdate();
-			System.out.println("¸ğµç Å×ÀÌºí µ¥ÀÌÅÍ »èÁ¦¿Ï·á");
+			System.out.println("ëª¨ë“  í…Œì´ë¸” ë°ì´í„° ì‚­ì œì™„ë£Œ");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -325,7 +325,7 @@ public class PostDao {
 			pstmt.setString(1, category);
 			
 			pstmt.executeUpdate();
-			System.out.println(category + "Å×ÀÌºí µ¥ÀÌÅÍ »èÁ¦¿Ï·á");
+			System.out.println(category + "í…Œì´ë¸” ë°ì´í„° ì‚­ì œì™„ë£Œ");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -408,12 +408,12 @@ public class PostDao {
 			PostVo postVo = new PostVo();
 			int nextNum = postDao.getNextNum();
 			postVo.setId(nextNum);
-			postVo.setTitle("¿©ÀÚ ´Ù¿î ÀÚÄÏÆÈ¾Æ¿ä" + i);
+			postVo.setTitle("ì—¬ì ë‹¤ìš´ ìì¼“íŒ”ì•„ìš”" + i);
 			postVo.setPrice(i*100);
 			postVo.setView(0);
-			postVo.setLocation("ºÎ»ê");
-			postVo.setDescription("¿©ÀÚ ´Ù¿îÀÚÄÏ ½Î°Ô ÆË´Ï´Ù. " + i + "¸ğµ¨ ±ŞÃ³¿ä~");
-			postVo.setSeller("ÃÖ¹ÌÈñ"+i);
+			postVo.setLocation("ë¶€ì‚°");
+			postVo.setDescription("ì—¬ì ë‹¤ìš´ìì¼“ ì‹¸ê²Œ íŒë‹ˆë‹¤. " + i + "ëª¨ë¸ ê¸‰ì²˜ìš”~");
+			postVo.setSeller("ìµœë¯¸í¬"+i);
 			postVo.setPasswd("1");
 			postVo.setFile("sample1");
 			postVo.setCategory("female");
@@ -427,12 +427,12 @@ public class PostDao {
 			PostVo postVo = new PostVo();
 			int nextNum = postDao.getNextNum();
 			postVo.setId(nextNum);
-			postVo.setTitle("½º¿Ğ·Îºê½ºÅ° ¸ñ°ÉÀÌ " + i);
+			postVo.setTitle("ìŠ¤ì™ˆë¡œë¸ŒìŠ¤í‚¤ ëª©ê±¸ì´ " + i);
 			postVo.setPrice(i*1000);
 			postVo.setView(0);
-			postVo.setLocation("¼­¿ï");
-			postVo.setDescription(i+"°³¿ù »ç¿ëÇÑ ½º¿Ğ·Îºê½ºÅ° ¸ñ°ÉÀÌ " + i + "¸ğµ¨ ±ŞÃ³¿ä~");
-			postVo.setSeller("ÀÌ¼­¿¬"+i);
+			postVo.setLocation("ì„œìš¸");
+			postVo.setDescription(i+"ê°œì›” ì‚¬ìš©í•œ ìŠ¤ì™ˆë¡œë¸ŒìŠ¤í‚¤ ëª©ê±¸ì´ " + i + "ëª¨ë¸ ê¸‰ì²˜ìš”~");
+			postVo.setSeller("ì´ì„œì—°"+i);
 			postVo.setPasswd("1");
 			postVo.setFile("sample2");
 			postVo.setCategory("accessory");
@@ -446,12 +446,12 @@ public class PostDao {
 			PostVo postVo = new PostVo();
 			int nextNum = postDao.getNextNum();
 			postVo.setId(nextNum);
-			postVo.setTitle("³ªÀÌÅ° ¹Ù¶÷¸·ÀÌ " + i +"½Ã¸®Áî");
+			postVo.setTitle("ë‚˜ì´í‚¤ ë°”ëŒë§‰ì´ " + i +"ì‹œë¦¬ì¦ˆ");
 			postVo.setPrice(i*1100);
 			postVo.setView(0);
-			postVo.setLocation("´ë±¸");
-			postVo.setDescription("ÇÑ±¹¿¡ " + i +"°³ ÀÖ´Â ¸®¹ÌÆ¼µå ¿¡µğ¼Ç " + i + "¸ğµ¨ ±ŞÃ³¿ä~");
-			postVo.setSeller("ÀåÇü¿í"+i);
+			postVo.setLocation("ëŒ€êµ¬");
+			postVo.setDescription("í•œêµ­ì— " + i +"ê°œ ìˆëŠ” ë¦¬ë¯¸í‹°ë“œ ì—ë””ì…˜ " + i + "ëª¨ë¸ ê¸‰ì²˜ìš”~");
+			postVo.setSeller("ì¥í˜•ìš±"+i);
 			postVo.setPasswd("1");
 			postVo.setFile("sample3");
 			postVo.setCategory("male");
@@ -465,12 +465,12 @@ public class PostDao {
 			PostVo postVo = new PostVo();
 			int nextNum = postDao.getNextNum();
 			postVo.setId(nextNum);
-			postVo.setTitle("¾ÆÀÌÆù " + i + " Pro");
+			postVo.setTitle("ì•„ì´í° " + i + " Pro");
 			postVo.setPrice(i*1000);
 			postVo.setView(0);
-			postVo.setLocation("¼­¿ï");
-			postVo.setDescription("¾ÆÀÌÆù" + i + " Pro ½Î°ÔÆË´Ï´Ù. " + "¡ÙÁ÷°Å·¡ È¯¿µ¡Ù");
-			postVo.setSeller("¹ÚÄ®¸°"+i);
+			postVo.setLocation("ì„œìš¸");
+			postVo.setDescription("ì•„ì´í°" + i + " Pro ì‹¸ê²ŒíŒë‹ˆë‹¤. " + "â˜†ì§ê±°ë˜ í™˜ì˜â˜†");
+			postVo.setSeller("ë°•ì¹¼ë¦°"+i);
 			postVo.setPasswd("1");
 			postVo.setFile("sample4");
 			postVo.setCategory("digital");

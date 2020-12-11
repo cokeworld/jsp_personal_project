@@ -13,34 +13,34 @@ import javax.sql.DataSource;
 public class JdbcUtils {
 	
 	public static Connection getConnection() throws Exception {
-		// Çì·ÎÄí MySQL DB
+		// í—¤ë¡œì¿  MySQL DB
 		// mysql://bec477009e8b36:112f7808@us-cdbr-east-02.cleardb.com/heroku_2a9d67c8b09e7af?reconnect=true&useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Seoul
 		
-		// Çì·ÎÄíDB id : bec477009e8b36
-		// Çì·ÎÄíDB pw : 112f7808
-		// Çì·ÎÄíDB hostname : us-cdbr-east-02.cleardb.com
-		// Çì·ÎÄíDB ½ºÅ°¸¶ÀÌ¸§ : heroku_2a9d67c8b09e7af
+		// í—¤ë¡œì¿ DB id : bec477009e8b36
+		// í—¤ë¡œì¿ DB pw : 112f7808
+		// í—¤ë¡œì¿ DB hostname : us-cdbr-east-02.cleardb.com
+		// í—¤ë¡œì¿ DB ìŠ¤í‚¤ë§ˆì´ë¦„ : heroku_2a9d67c8b09e7af
 		//=============================================================
 		
 		Connection con = null;
 		
 		// ===============================================
-		// DBÁ¢¼ÓÁ¤º¸
+		// DBì ‘ì†ì •ë³´
 		String dbUrl = "jdbc:mysql://localhost:3306/jspdb?useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Seoul";
 		String dbId = "myid";
 		String dbPwd = "mypwd";
 		
-		// 1´Ü°è. DBµå¶óÀÌ¹ö Å¬·¡½º ·Îµù
+		// 1ë‹¨ê³„. DBë“œë¼ì´ë²„ í´ë˜ìŠ¤ ë¡œë”©
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		// 2´Ü°è. DB¿¡ ¿¬°á ½Ãµµ. ¿¬°áÈÄ Connection°´Ã¼¸¦ ¸®ÅÏÇÔ.
+		// 2ë‹¨ê³„. DBì— ì—°ê²° ì‹œë„. ì—°ê²°í›„ Connectionê°ì²´ë¥¼ ë¦¬í„´í•¨.
 		con = DriverManager.getConnection(dbUrl, dbId, dbPwd);
 		return con;
 		// ===============================================
 		
-//		// Ä¿³Ø¼Ç Ç® ¹æ½Ä
+//		// ì»¤ë„¥ì…˜ í’€ ë°©ì‹
 //		Context context = new InitialContext();
 //		DataSource ds = (DataSource) context.lookup("java:comp/env/jdbc/jspdb");
-//		con = ds.getConnection(); // Ä¿³Ø¼Ç ÇÑ°³ ºô·Á¿À±â
+//		con = ds.getConnection(); // ì»¤ë„¥ì…˜ í•œê°œ ë¹Œë ¤ì˜¤ê¸°
 //		return con;
 	} // getConnection()
 	
