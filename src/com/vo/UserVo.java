@@ -5,83 +5,67 @@ import java.sql.Timestamp;
 public class UserVo {
 	private String id;
 	private String passwd;
-	private String subject;
-	private String content;
 	private String name;
-	private Integer age;
-	private String gender;
+	private String address;
 	private String email;
-	private int readCount;
+	private int age;
+	private String gender;
 	private Timestamp regDate;
 	
 	public String getId() {
 		return id;
 	}
-	public String getPasswd() {
-		return passwd;
-	}
-	public String getName() {
-		return name;
-	}
-	public Integer getAge() {
-		return age;
-	}
-	public String getGender() {
-		return gender;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public Timestamp getRegDate() {
-		return regDate;
-	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	public String getPasswd() {
+		return passwd;
 	}
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
 	}
+	public String getName() {
+		return name;
+	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public void setAge(Integer age) {
-		this.age = age;
+	public String getAddress() {
+		return address;
 	}
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getEmail() {
+		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public Timestamp getRegDate() {
+		return regDate;
+	}
 	public void setRegDate(Timestamp regDate) {
 		this.regDate = regDate;
 	}
-	
-	public String getSubject() {
-		return subject;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	
-	public int getReadCount() {
-		return readCount;
-	}
-	public void setReadCount(int readCount) {
-		this.readCount = readCount;
-	}
 	@Override
 	public String toString() {
-		return "ZangtuVo [id=" + id + ", passwd=" + passwd + ", subject=" + subject + ", content=" + content + ", name="
-				+ name + ", age=" + age + ", gender=" + gender + ", email=" + email + ", regDate=" + regDate + "]";
+		return "UserVo [id=" + id + ", passwd=" + passwd + ", name=" + name + ", address=" + address + ", email="
+				+ email + ", age=" + age + ", gender=" + gender + ", regDate=" + regDate + "]";
 	}
-
+	
 	
 	
 }

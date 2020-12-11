@@ -12,95 +12,86 @@ import org.apache.tomcat.dbcp.dbcp2.cpdsadapter.PStmtKeyCPDS;
 import com.dao.JdbcUtils;
 import com.mysql.cj.protocol.Resultset;
 import com.vo.PostVo;
-import com.vo.UserVo;
 
 public class PostDao {
 	
-	public void addUser(UserVo zangtuVo) {
+	// addPost
+	public void addPost(PostVo postVo) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		
 		String sql = "";
+		
 		try {
 			con = JdbcUtils.getConnection();
-			sql = "INSERT INTO user(id, passwd, name) "
-					+ "VALUES(?, ? , ?)";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, zangtuVo.getId());
-			pstmt.setString(2, zangtuVo.getPasswd());
-			pstmt.setString(3, zangtuVo.getName());
 			
+			sql  = "INSERT INTO product ";
+			sql += "(id, title, price, view, location, description, seller, passwd, file, category) ";
+			sql += "VALUES (?, ?, ?, ?, ?, ?, ?, ? ,?, ?) ";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, postVo.getId());
+			pstmt.setString(2, postVo.getTitle());
+			pstmt.setInt(3, postVo.getPrice());
+			pstmt.setInt(4, postVo.getView());
+			pstmt.setString(5, postVo.getLocation());
+			pstmt.setString(6, postVo.getDescription());
+			pstmt.setString(7, postVo.getSeller());
+			pstmt.setString(8, postVo.getPasswd());
+			pstmt.setString(9, postVo.getFile());
+			pstmt.setString(10, postVo.getCategory());
+
 			pstmt.executeUpdate();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			JdbcUtils.close(con, pstmt);
 		}
-	}
+	} // addPost
 	
-	public int checkDuplicatedId(String id) {
-		// 1 = 중복, 0 = 중복x
-		int duplication = 1;
-		
+	public void deleteAll() {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		String sql = "";
 		
 		try {
 			con = JdbcUtils.getConnection();
-			sql = "SELECT COUNT(*) FROM user"
-					+ "WHERE id = ?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				duplication = rs.getInt(1);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			JdbcUtils.close(con, pstmt, rs);
-		}
-		return duplication;
-	}
-	
-	public int checkUser(String id, String passwd) {
-		// 1: id passwd 인증성공
-		// 0: id 틀림
-		// -1: pass 틀림
-		
-		int checkCount = 0;
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		String sql = "";
-		
-		try {
-			con = JdbcUtils.getConnection();
-			sql = "SELECT passwd FROM user WHERE id=?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
-				if(passwd.equals(rs.getString("passwd"))) {
-					checkCount=1;
-				} else {
-					checkCount=-1;
-				}
-			} else {
-				// id 틀림
-				checkCount = 0;
-			}
+			String sql = "DELETE FROM product";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.executeUpdate();
+			System.out.println("모든 테이블 데이터 삭제완료");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			JdbcUtils.close(con, pstmt, rs);
+			JdbcUtils.close(con, pstmt);
 		}
-		return checkCount;
-	}
+	} // deleteAll
+	
+	public void deleteOneCategory(String category) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "";
+		
+		try {
+			con = JdbcUtils.getConnection();
+			
+			sql = "DELETE FROM product";
+			sql += "WHERE category = ?";
+					
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, category);
+			
+			pstmt.executeUpdate();
+			System.out.println(category + "테이블 데이터 삭제완료");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtils.close(con, pstmt);
+		}
+	} // deleteOneCategory
+	
 	public List<PostVo> getPostList(int startRow, int pageSize) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -252,86 +243,9 @@ public class PostDao {
 		}
 		return count;
 	} // getPostsCount()
-	
 
-	
 
-	// addPost
-	public void addPost(PostVo postVo) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		
-		String sql = "";
-		
-		try {
-			con = JdbcUtils.getConnection();
-			
-			sql  = "INSERT INTO product ";
-			sql += "(id, title, price, view, location, description, seller, passwd, file, category) ";
-			sql += "VALUES (?, ?, ?, ?, ?, ?, ?, ? ,?, ?) ";
-			
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, postVo.getId());
-			pstmt.setString(2, postVo.getTitle());
-			pstmt.setInt(3, postVo.getPrice());
-			pstmt.setInt(4, postVo.getView());
-			pstmt.setString(5, postVo.getLocation());
-			pstmt.setString(6, postVo.getDescription());
-			pstmt.setString(7, postVo.getSeller());
-			pstmt.setString(8, postVo.getPasswd());
-			pstmt.setString(9, postVo.getFile());
-			pstmt.setString(10, postVo.getCategory());
 
-			pstmt.executeUpdate();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			JdbcUtils.close(con, pstmt);
-		}
-	} // addPost
-	
-	public void deleteAll() {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		
-		try {
-			con = JdbcUtils.getConnection();
-			
-			String sql = "DELETE FROM product";
-			pstmt = con.prepareStatement(sql);
-			
-			pstmt.executeUpdate();
-			System.out.println("모든 테이블 데이터 삭제완료");
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			JdbcUtils.close(con, pstmt);
-		}
-	} // deleteAll
-	
-	public void deleteOneCategory(String category) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		String sql = "";
-		
-		try {
-			con = JdbcUtils.getConnection();
-			
-			sql = "DELETE FROM product";
-			sql += "WHERE category = ?";
-					
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, category);
-			
-			pstmt.executeUpdate();
-			System.out.println(category + "테이블 데이터 삭제완료");
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			JdbcUtils.close(con, pstmt);
-		}
-	} // deleteOneCategory
 	
 	// updatePostView
 	public void updatePostView(int postNum) {
