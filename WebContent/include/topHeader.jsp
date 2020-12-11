@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+//세션값 가져오기
+String id = (String) session.getAttribute("id");
+%>
 <!-- Top Bar Start -->
 <div class="top-bar">
     <div class="container">
@@ -75,8 +79,21 @@
                     <a href="contact.html" class="nav-item nav-link">Contact Us</a>
                 </div>
                 <div class="login ml-auto nav-item">
-                    <a href="loginForm.jsp"><i class="fas fa-key"></i></a>
-                    <a href="joinForm.jsp"><i class="fas fa-user-plus"></i></a>
+                <%
+                if(id == null) {
+                		%>
+                    
+                    <a href="loginForm.jsp">로그인</a>                		
+               <!--<i class="fas fa-key"></i>  <i class="fas fa-user-plus"></i> -->
+                    <a href="joinForm.jsp">회원가입</a>
+                		<%
+                	} else {
+                		%>
+                		<a href="mypage.jsp"><%=id %> 님 로그인 하셨습니다.</a>
+                		<a href="logout.jsp">로그아웃</a>
+                		<%
+                	}
+                %>
 <!--                             <a href=""><i class="fab fa-linkedin-in"></i></a> -->
 <!--                             <a href=""><i class="fab fa-instagram"></i></a> -->
 <!--                             <a href=""><i class="fab fa-youtube"></i></a> -->

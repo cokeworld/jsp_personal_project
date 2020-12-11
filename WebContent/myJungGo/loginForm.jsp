@@ -48,6 +48,11 @@ li {
 				<i class="fas fa-key"></i> <input type="password" name="passwd"
 					placeholder="비밀번호" required>
 			</div>
+			<br>
+			<div class="keepLogin">
+				<input type="checkbox" name="keepLogin" value="true">
+				30분 후 자동 로그아웃
+			</div>	
 		</div>
 		<br>
 		
@@ -57,9 +62,6 @@ li {
 		<input type="submit" value="로그인">
 		<input type="button" value="회원가입" onclick="location.href='joinForm.jsp'">
 		<script src="../js/jquery-3.5.1.js"></script>
-		<script>
-
-</script>
 	</form>
 	<div class="right">©MyJung-go Corp. All rigths Reserved.</div>
 </body>

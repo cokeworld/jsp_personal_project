@@ -342,11 +342,12 @@ button.btn:hover {
 }
 
 .nav-bar .login {
-    font-size: 0;
+    font-size: 14px;
     overflow: hidden;
 }
 
-.nav-bar .login a {
+/*
+.nav-bar .login a i {
     display: inline-block;
     margin-left: 5px;
     width: 30px;
@@ -358,6 +359,7 @@ button.btn:hover {
     border: 1px solid #ffffff;
     border-radius: 4px;
 }
+*/
 
 .nav-bar .login a:hover {
     background: #ffffff;
@@ -372,7 +374,10 @@ button.btn:hover {
     color: #FF6F61;
 }
 
-
+.nav-bar .login .nav-item {
+	width: 30%;
+	height: 30px;
+}
 /**********************************/
 /********** Top News CSS **********/
 /**********************************/

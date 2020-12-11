@@ -1,40 +1,58 @@
-<%@page import="com.dao.PostDao"%>
+<%@page import="com.dao.UserDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	request.setCharacterEncoding("utf-8");
+// post 전송 파라미터 한글처리
+request.setCharacterEncoding("utf-8");
 
+// 파라미터 id  passwd   keepLogin  가져오기
 String id = request.getParameter("id");
 String passwd = request.getParameter("passwd");
+String strKeepLogin = request.getParameter("keepLogin");
 
-PostDao zangtuDao = new PostDao();
+// DAO 객체 준비
+UserDao userDao = new UserDao();
 
-//1: id passwd 인증성공
-//0: id 틀림
-//-1: pass 틀림
-int checkUser = zangtuDao.checkUser(id, passwd);
+// 로그인 확인.
+// check -1  없는 아이디
+// check  0  패스워드 틀림
+// check  1  아이디, 패스워드 모두 일치
+int check = userDao.checkUser(id, passwd);
 
-if(checkUser==1) {
-	session.setAttribute("id", id);
-%>
-	<script>
-	alert('로그인 성공');
-	location.href = 'index.jsp';
-	</script>
-	<%
-} else if(checkUser==0) {
+// 로그인이 실패했을 경우
+if (check != 1) {
 	%>
 	<script>
-	alert('가입되지 않은 ID입니다.');
-	history.back();
-	</script>
+		alert('아이디 또는 패스워드가 일치하지 않습니다.');
+		history.back();
+	</script>	
 	<%
-} else {
-	%>
-	<script>
-	alert('비밀번호가 일치하지 않습니다.');
-	history.back();
-	</script>
-	<%	
+	return;
 }
+
+//로그인 상태유지 정보 확인하기
+boolean keepLogin = false;
+if (strKeepLogin != null) { // "true"
+	keepLogin = Boolean.parseBoolean(strKeepLogin); // "true" -> true
+}
+
+// 로그인이 성공했을 경우
+// 세션에 로그인 아이디를 저장 (로그인 처리)
+session.setAttribute("id", id);
+
+// 로그인 상태유지를 원하면 쿠키 생성 후 응답주기
+if (keepLogin) { // keepLogin == true
+	Cookie cookie = new Cookie("id", id);
+	cookie.setMaxAge(60 * 60);  // 초단위 설정  60분
+	cookie.setPath("/");
+
+	response.addCookie(cookie);
+}
+
+// index.jsp로 리다이렉트
+response.sendRedirect("index.jsp");
 %>
+
+
+
+
