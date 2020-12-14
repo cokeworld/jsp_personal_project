@@ -10,16 +10,13 @@ String id = (String) session.getAttribute("id");
         <div class="row">
             <div class="col-md-6">
                 <div class="tb-contact">
-                    <p><i class="fas fa-envelope"></i>info@mail.com</p>
-                    <p><i class="fas fa-phone-alt"></i>+012 345 6789</p>
+                    <p><i class="fas fa-envelope"></i>xorud1350@naver.com</p>
+                    <p><i class="fas fa-phone-alt"></i>010-2542-1350</p>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="tb-menu">
-                    <a href="">About</a>
-                    <a href="">Privacy</a>
-                    <a href="">Terms</a>
-                    <a href="">Contact</a>
+                    <a href="">다른 포트폴리오 보러가기</a>
                 </div>
             </div>
         </div>
@@ -40,9 +37,9 @@ String id = (String) session.getAttribute("id");
             </div>
             <div class="col-lg-6 col-md-4">
                 <div class="b-ads">
-                    <a href="https://htmlcodex.com">
+                    <%-- <a href="https://htmlcodex.com">
                         <img src="img/ads-1.jpg" alt="Ads">
-                    </a>
+                    </a> --%>
                 </div>
             </div>
             <div class="col-lg-3 col-md-4">

@@ -72,7 +72,7 @@ table {
 							|| filename.endsWith("gif") || filename.endsWith("png")) {
 						%>
 						<br>
-						<img src="../upload/<%=filename %>" width="100" height="100">
+						<img src="../upload/<%=filename %>" width="300" height="300">
 						<%
 					}
 				}

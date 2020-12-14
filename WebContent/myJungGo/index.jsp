@@ -6,7 +6,7 @@
 <%
 PostDao postDao = new PostDao();
 //글목록 가져오기
-int startPost = 1;
+int startPost = 0;
 int postSize = 4;
 List<PostVo> postList = null;
 
