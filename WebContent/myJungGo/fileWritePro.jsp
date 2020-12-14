@@ -17,7 +17,7 @@
 
 // 업로드 할 실제 물리적 경로 구하기
 // String realPath = application.getRealPath("/upload");
-String realPath = request.getServletContext().getRealPath("/upload");
+String realPath = request.getServletContext().getRealPath("upload");
 System.out.println("realPath : " + realPath);
 
 // 파일 업로드 하기
@@ -45,8 +45,9 @@ postVo.setTitle(multi.getParameter("title"));
 postVo.setPrice(Integer.parseInt(multi.getParameter("price")));
 postVo.setLocation(multi.getParameter("location"));
 postVo.setDescription(multi.getParameter("description"));
+postVo.setCategory(multi.getParameter("category"));
 
-// 업로드한 원본 파일이름 가져오기
+// 원본파일 이름 가져오기
 System.out.println("원본파일명 : " + multi.getOriginalFileName("filename"));
 
 // 업로드한 실제 파일이름 가져오기
@@ -57,7 +58,7 @@ postVo.setFile(multi.getFilesystemName("filename"));
 PostDao postDao = new PostDao();
 
 // 글번호 가져와서 VO에 저장
-int nextNum = postDao.getNextNum("female");
+int nextNum = postDao.getNextNum();
 postVo.setId(nextNum);
 
 postVo.setView(0);  // 조회수
@@ -68,7 +69,7 @@ postVo.setView(0);  // 조회수
 // boardVo.setReSeq(0); // 주글일때는 글그룹 내에서 순번이 0 (첫번째)
 
 // 주글 등록하기
-postDao.addPost("female", postVo);
+postDao.addPost(postVo);
 
 // 글내용 상세보기 화면 content.jsp로 이동
 response.sendRedirect("category_female.jsp");
