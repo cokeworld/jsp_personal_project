@@ -34,7 +34,10 @@ List<PostVo> postList = null;
                         <h2>여성의류 <input type="button" value="전체보기" onclick="location.href='category_female.jsp'"></h2>
                         <div class="row cn-slider">
                         <%
-                        postList = postDao.getPostList("female", startPost, postSize);
+                        // category 설정
+                        String category = "female";
+                        
+                        postList = postDao.getPostList(category, startPost, postSize);
                         for (PostVo postVo : postList) {
                         %>
                             <div class="col-md-6">
@@ -62,7 +65,9 @@ List<PostVo> postList = null;
 								}
 								%>
                                     <div class="cn-title">
-                                        <a href=""><%=postVo.getTitle() %></a>
+                                        <a href="content_<%=category %>.jsp?postNum=<%=postVo.getId() %>&pageNum=1">
+                                        <%=postVo.getTitle() %>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +81,10 @@ List<PostVo> postList = null;
                         <h2>액세서리 <input type="button" value="전체보기" onclick="location.href='category_accessory.jsp'"></h2>
                         <div class="row cn-slider">
                         <%
-                        postList = postDao.getPostList("accessory", startPost, postSize);
+                        // category 설정
+                        category = "accessory";
+
+                        postList = postDao.getPostList(category, startPost, postSize);
                         for (PostVo postVo : postList) {
                         %>
                             <div class="col-md-6">
@@ -104,7 +112,9 @@ List<PostVo> postList = null;
 								}
 								%>
                                     <div class="cn-title">
-                                        <a href=""><%=postVo.getTitle() %></a>
+                                        <a href="content_<%=category %>.jsp?postNum=<%=postVo.getId() %>&pageNum=1">
+                                        <%=postVo.getTitle() %>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -127,7 +137,10 @@ List<PostVo> postList = null;
                         <h2>남성의류 <input type="button" value="전체보기" onclick="location.href='category_male.jsp'"></h2>
                         <div class="row cn-slider">
                         <%
-                        postList = postDao.getPostList("male", startPost, postSize);
+                        // category 설정
+                        category = "male";
+                        
+                        postList = postDao.getPostList(category, startPost, postSize);
                         for (PostVo postVo : postList) {
                         %>
                             <div class="col-md-6">
@@ -155,7 +168,9 @@ List<PostVo> postList = null;
 								}
 								%>
                                     <div class="cn-title">
-                                        <a href=""><%=postVo.getTitle() %></a>
+                                        <a href="content_<%=category %>.jsp?postNum=<%=postVo.getId() %>&pageNum=1">
+                                        <%=postVo.getTitle() %>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -169,7 +184,10 @@ List<PostVo> postList = null;
                         <h2>디지털/가전 <input type="button" value="전체보기" onclick="location.href='category_digital.jsp'"></h2>
                         <div class="row cn-slider">
                         <%
-                        postList = postDao.getPostList("digital", startPost, postSize);
+                        // category 설정
+                        category = "digital";
+                        
+                        postList = postDao.getPostList(category, startPost, postSize);
                         for (PostVo postVo : postList) {
                         %>
                             <div class="col-md-6">
@@ -197,7 +215,9 @@ List<PostVo> postList = null;
 								}
 								%>
                                     <div class="cn-title">
-                                        <a href=""><%=postVo.getTitle() %></a>
+                                        <a href="content_<%=category %>.jsp?postNum=<%=postVo.getId() %>&pageNum=1">
+                                        <%=postVo.getTitle() %>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

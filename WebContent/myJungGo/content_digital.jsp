@@ -5,7 +5,7 @@
 	pageEncoding="UTF-8"%>
 <%
 	// category 설정
-	String category = "female";
+	String category = "digital";
 
 	// 파라미터값 int num, String pageNum 가져오기
 	int postNum = Integer.parseInt(request.getParameter("postNum")); // 글번호
