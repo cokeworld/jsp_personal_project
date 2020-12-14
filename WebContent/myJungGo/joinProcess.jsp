@@ -1,6 +1,5 @@
 <%@page import="com.dao.UserDao"%>
 <%@page import="com.vo.UserVo"%>
-<%@page import="com.dao.PostDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -15,7 +14,7 @@ request.setCharacterEncoding("utf-8");
 // 가입날짜 생성해서 넣기
 // memberVo.setRegDate(new Timestamp(System.currentTimeMillis()));
 
-UserDao userDao = new UserDao();
+UserDao userDao = UserDao.getInstance();
 userDao.addUser(userVo);
 %>
 

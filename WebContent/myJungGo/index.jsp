@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-PostDao postDao = new PostDao();
+PostDao postDao = PostDao.getInstance();
 //글목록 가져오기
 int startPost = 0;
 int postSize = 4;

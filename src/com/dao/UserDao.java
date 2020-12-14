@@ -6,6 +6,12 @@ import java.sql.ResultSet;
 import com.vo.UserVo;
 
 public class UserDao {
+
+	private static UserDao instance = new UserDao();
+	public static UserDao getInstance() {
+		return instance;
+	}
+	
 	public void addUser(UserVo userVo) {
 		Connection con = null;
 		PreparedStatement pstmt = null;

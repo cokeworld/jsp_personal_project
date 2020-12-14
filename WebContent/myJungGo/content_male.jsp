@@ -12,7 +12,7 @@
 	String pageNum = request.getParameter("pageNum"); // 페이지번호
 
 	// DAO 객체 준비
-	PostDao	postDao = new PostDao();
+	PostDao	postDao = PostDao.getInstance();
 	
 	// 조회수 1 증가하기
 	postDao.updatePostView(postNum);

@@ -55,7 +55,7 @@ System.out.println("실제파일명 : " + multi.getFilesystemName("filename"));
 postVo.setFile(multi.getFilesystemName("filename"));
 
 // DAO 객체 준비
-PostDao postDao = new PostDao();
+PostDao postDao = PostDao.getInstance();
 
 // 글번호 가져와서 VO에 저장
 int nextNum = postDao.getNextNum();

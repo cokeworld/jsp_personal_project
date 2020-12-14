@@ -11,7 +11,7 @@ String passwd = request.getParameter("passwd");
 String strKeepLogin = request.getParameter("keepLogin");
 
 // DAO 객체 준비
-UserDao userDao = new UserDao();
+UserDao userDao = UserDao.getInstance();
 
 // 로그인 확인.
 // check -1  없는 아이디

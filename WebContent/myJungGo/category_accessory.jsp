@@ -11,7 +11,7 @@ String category = "accessory";
 String categoryKoreanName = "액세서리";
 
 // DAO 객체 준비
-PostDao postDao = new PostDao();
+PostDao postDao = PostDao.getInstance();
 
 // 전체 글갯수 가져오기
 int count = postDao.getPostsCount();

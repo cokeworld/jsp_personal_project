@@ -15,6 +15,11 @@ import com.vo.PostVo;
 
 public class PostDao {
 	
+	private static PostDao instance = new PostDao();
+	
+	public static PostDao getInstance() {
+		return instance;
+	}
 	// addPost
 	public void addPost(PostVo postVo) {
 		Connection con = null;

@@ -11,7 +11,7 @@ String category = "digital";
 String categoryKoreanName = "디지털/가전";
 
 // DAO 객체 준비
-PostDao postDao = new PostDao();
+PostDao postDao = PostDao.getInstance();
 
 // 전체 글갯수 가져오기
 int count = postDao.getPostsCount();
