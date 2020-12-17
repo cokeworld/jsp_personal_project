@@ -188,7 +188,38 @@ public class PostDao {
 		}
 		return list;
 	} 	// getPostList
+
+	// updatePost
+	public void updatePost(PostVo postVo) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = "";
+		
+		try {
+			con = JdbcUtils.getConnection();
+			
+			sql  = "UPDATE product ";
+			sql += "SET title = ?, price = ?, location = ?, description = ?, passwd = ?, file = ?, category = ? ";
+			sql += "WHERE id = ? ";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, postVo.getTitle());
+			pstmt.setInt(2, postVo.getPrice());
+			pstmt.setString(3, postVo.getLocation());
+			pstmt.setString(4, postVo.getDescription());
+			pstmt.setString(5, postVo.getFile());
+			pstmt.setString(6, postVo.getCategory());
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtils.close(con, pstmt);
+		}
+	}
 	
+	// getNextNum
 	public int getNextNum() {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -248,8 +279,6 @@ public class PostDao {
 		}
 		return count;
 	} // getPostsCount()
-
-
 
 	
 	// updatePostView
@@ -321,7 +350,7 @@ public class PostDao {
 		return postVo;
 	} //getPostByNum
 
-
+	// makeTestSampels
 	public static void makeTestSamples(PostDao postDao) {
 		for(int i=0; i<60; i++) {
 			PostVo postVo = new PostVo();
