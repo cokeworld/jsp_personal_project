@@ -4,8 +4,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <% 
+int postNum = Integer.parseInt(request.getParameter("num"));
 String pageNum = request.getParameter("pageNum");
 String category = request.getParameter("category");
+
+PostDao postDao = PostDao.getInstance();
+PostVo postVo = postDao.getPostByNum(postNum);
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +17,16 @@ String category = request.getParameter("category");
 	<%-- head 컨텐트 영역 --%>
 	<jsp:include page="/include/headContent.jsp" />
 </head>
-
+<style>
+span#delFile {
+	color: red;
+	background-color: yellow;
+	font-weight: bold;
+	border: 1px solid black;
+	border-radius: 5px;
+	cursor: pointer;
+}
+</style>
 <body>
 	<%-- topHeader 영역 --%>
 	<jsp:include page="/include/topHeader.jsp" />
@@ -29,16 +42,17 @@ String category = request.getParameter("category");
 		<div class="row">
 			<br>
 			<div class="products">
-				<form action="fileupdatePro.jsp" method="post" enctype="multipart/form-data">
+				<form action="fileUpdatePro.jsp" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="pageNum" value="<%=pageNum %>">
+					<input type="hidden" name="id" value="<%=postVo.getId() %>">
 					<table border="1">
 						<tr>
 							<th>판매자</th>
-							<td><input type="text" name="seller" required readonly></td>
+							<td><input type="text" name="seller" value="<%=postVo.getSeller() %>" required readonly></td>
 						</tr>
 						<tr>
 							<th>패스워드</th>
-							<td><input type="password" name="passwd" required></td>
+							<td><input type="password" name="passwd" value="<%=postVo.getPasswd() %>"required></td>
 						</tr>
 						<tr>
 							<th>카테고리</th>
@@ -53,34 +67,55 @@ String category = request.getParameter("category");
 						</tr>
 						<tr>
 							<th>제목</th>
-							<td><input type="text" name="title" required></td>
+							<td><input type="text" name="title" value="<%=postVo.getTitle() %>" required></td>
 						</tr>
 						<tr>
 							<th>파일</th>
-							<td><input type="file" name="filename"></td>
+							<td>
+							<%
+							String filename = postVo.getFile();
+							if (filename != null) {
+								%>
+								<div id="oldFileArea">
+									<img src="../upload/<%=filename %>" width="300" height="300">
+									<span id="delFile">X</span>
+									<input type="hidden" name="oldFilename" value="<%=filename %>">
+									<input type="hidden" name="filename" value="<%=filename %>">
+								</div>
+									<%
+							} else {
+								%>
+								<img src="img/no-image.png" width="300" height="300" alt="No Image">
+								<input type="file" name="filename">
+								<%
+							}
+							%>
+							</td>
+
 						</tr>
 						<tr>
 							<th>가격</th>
-							<td><input type="number" name="price"></td>
+							<td><input type="number" name="price" value="<%=postVo.getPrice() %>"></td>
 						</tr>
 						<tr>
 							<th>위치</th>
-							<td><input type="text" name="location"></td>
+							<td><input type="text" name="location" value="<%=postVo.getLocation() %>"></td>
 						</tr>
 						<tr>
 							<th>내용</th>
-							<td><textarea rows="13" cols="40" name="description" required></textarea></td>
+							<td><textarea rows="13" cols="40" name="description" required><%=postVo.getDescription() %></textarea></td>
 						</tr>
 						<tr>
 							<td colspan="2">
 								<input type="submit" value="파일 수정하기">
 								<input type="reset" value="다시쓰기">
-								<input type="button" value="홈으로" onclick="location.href='index.jsp'">
+								<input type="button" value="글목록" onclick="location.href='content_<%=category%>'">
 							</td>
 						</tr>
 					</table>
 				</form>
 		</div>
+	</div>
 	</div>
 	</div>
 	<!-- File Form End-->
@@ -93,5 +128,18 @@ String category = request.getParameter("category");
 
 	<%-- JavaScriptContent 영역 --%>
 	<jsp:include page="/include/jsContent.jsp" />
+	
+<script>
+	// 기존 첨부파일 삭제 [X]를 클릭했을때
+	$('span#delFile').click(function () {
+		// hidden 태그의 name 속성값을 변경하기
+		$(this).closest('div').next().prop('name', 'delFilename');
+
+		$(this).closest('td').prepend('<input type="file" name="filename">');
+		
+		$(this).closest('div').remove();
+	});
+</script>
+
 </body>
 </html>

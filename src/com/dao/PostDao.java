@@ -200,7 +200,7 @@ public class PostDao {
 			con = JdbcUtils.getConnection();
 			
 			sql  = "UPDATE product ";
-			sql += "SET title = ?, price = ?, location = ?, description = ?, passwd = ?, file = ?, category = ? ";
+			sql += "SET title = ?, price = ?, location = ?, description = ?, passwd = ? ,file = ?, category = ? ";
 			sql += "WHERE id = ? ";
 			
 			pstmt = con.prepareStatement(sql);
@@ -208,8 +208,11 @@ public class PostDao {
 			pstmt.setInt(2, postVo.getPrice());
 			pstmt.setString(3, postVo.getLocation());
 			pstmt.setString(4, postVo.getDescription());
-			pstmt.setString(5, postVo.getFile());
-			pstmt.setString(6, postVo.getCategory());
+			pstmt.setString(5, postVo.getPasswd());
+			pstmt.setString(6, postVo.getFile());
+			pstmt.setString(7, postVo.getCategory());
+			
+			pstmt.setInt(8, postVo.getId());
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
