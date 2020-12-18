@@ -79,7 +79,7 @@ PostDao postDao = PostDao.getInstance();
 postDao.updatePost(postVo);
 
 // 글내용 상세보기 화면 content.jsp로 이동
-response.sendRedirect("category_" + category + ".jsp");
+response.sendRedirect("category.jsp?category=" + category);
 %>
 
 

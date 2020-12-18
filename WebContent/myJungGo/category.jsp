@@ -7,8 +7,25 @@
 request.setCharacterEncoding("utf-8");
 
 // category 설정
-String category = "male";
-String categoryKoreanName = "남성의류";
+String category = request.getParameter("category");
+
+// category 한글 이름 설정
+String categoryKoreanName = "";
+
+switch (category) {
+case "female": 
+	categoryKoreanName = "여성의류";
+	break;
+case "accessory": 
+	categoryKoreanName = "액세서리";
+	break;
+case "male": 
+	categoryKoreanName = "남성의류";
+	break;
+case "digital": 
+	categoryKoreanName = "디지털/가전";
+	break;
+}
 
 // DAO 객체 준비
 PostDao postDao = PostDao.getInstance();
@@ -66,29 +83,16 @@ if (count > 0) {
 
 		%>
 					<div class="product">
-						<a href='content_<%=category %>.jsp?postNum=<%=postVo.getId() %>&pageNum=<%=pageNum %>' class="">
+						<a href='content.jsp?postNum=<%=postVo.getId() %>&pageNum=<%=pageNum %>&category=<%=category %>' class="">
 							<div class="post_image">
 							<%
 							String file = postVo.getFile();
 							
 							if(file != null) {
-								
-								// Start makeSampleImages
-								if(file.equals("sample3")) {
-								%>
-									<img src="img/sample3.jpg" width="194" height="194" alt="상품 이미지">
-								<%
-								} else if(file.equals("sample2")) {
-									%>
-										<img src="img/sample2.png" width="194" height="194" alt="상품 이미지">
-									<%	
-								} else {
-								// End makeSampleImages
-								
 								%>
 									<img src="../upload/<%=file %>" width="194" height="194" alt="상품 이미지">
 								<%	
-								}
+								
 							} else {
 								%>
 								<img src="img/no-image.png" width="194" height="194" alt="No Image">
@@ -145,7 +149,7 @@ if (count > 0) {
 		// [이전]
 		if (startPage > pageBlock) {
 			%>
-				<a href="category_<%=category %>.jsp?pageNum=<%=startPage - pageBlock %>">[이전]</a>
+				<a href="category.jsp?pageNum=<%=startPage - pageBlock %>&category=<%=category %>">[이전]</a>
 				<%
 			}
 			
@@ -153,11 +157,11 @@ if (count > 0) {
 			for (int i=startPage; i<=endPage; i++) {
 				if (i == pageNum) {
 					%>
-					<a href="category_<%=category %>.jsp?pageNum=<%=i %>" class="font-weight-bold"> [<%=i %>]</a>
+					<a href="category.jsp?pageNum=<%=i %>&category=<%=category %>" class="font-weight-bold"> [<%=i %>]</a>
 					<%
 				} else {
 					%>
-					<a href="category_<%=category %>.jsp?pageNum=<%=i %>">[<%=i %>]</a>
+					<a href="category.jsp?pageNum=<%=i %>&category=<%=category %>">[<%=i %>]</a>
 					<%
 				}
 			} // for
@@ -166,7 +170,7 @@ if (count > 0) {
 			// [다음]
 			if (endPage < pageCount) {
 				%>
-				<a href="category_<%=category %>.jsp?pageNum=<%=startPage + pageBlock %>">[다음]</a>
+				<a href="category.jsp?pageNum=<%=startPage + pageBlock %>&category=<%=category %>">[다음]</a>
 			<%
 		}
 			%>

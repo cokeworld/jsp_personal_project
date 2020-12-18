@@ -5,7 +5,7 @@
 	pageEncoding="UTF-8"%>
 <%
 	// category 설정
-	String category = "accessory";
+	String category = request.getParameter("category");
 
 	// 파라미터값 int num, String pageNum 가져오기
 	int postNum = Integer.parseInt(request.getParameter("postNum")); // 글번호
@@ -63,8 +63,8 @@ table {
 			<th>사진</th>
 			<td colspan="3">
 				<%
-				if (postVo.getFile() != null) {
-					String filename = postVo.getFile();
+				String filename = postVo.getFile();
+				if (filename != null) {
 					%>
 					<a href="../upload/<%=filename %>"><%=filename %></a>
 					<%
@@ -84,11 +84,10 @@ table {
 		</tr>
 		<tr>
 			<td colspan="4">
-				<input type="button" value="파일글수정" onclick="location.href='fileUpdateForm.jsp?num=<%=postNum %>&pageNum=<%=pageNum %>'"> 
-				<input type="button" value="글수정" onclick="location.href='updateForm.jsp?num=<%=postNum %>&pageNum=<%=pageNum %>'">
+				<input type="button" value="글수정" onclick="location.href='fileUpdateForm.jsp?num=<%=postNum %>&pageNum=<%=pageNum %>&category=<%=category %>'"> 
 				<input type="button" value="글삭제" onclick="location.href='deleteForm.jsp?num=<%=postNum %>&pageNum=<%=pageNum %>'">
 <%-- 				<input type="button" value="답글쓰기" onclick="location.href='reWriteForm.jsp?reRef=<%=postVo.getReRef() %>&reLev=<%=postVo.getReLev() %>&reSeq=<%=postVo.getReSeq() %>&pageNum=<%=pageNum %>'"> --%>
-				<input type="button" value="글목록" onclick="location.href='category_<%=category %>.jsp?pageNum=<%=pageNum %>'">
+				<input type="button" value="글목록" onclick="location.href='category.jsp?pageNum=<%=pageNum %>&category=<%=category %>'">
 			</td>
 		</tr>
 	</table>

@@ -31,7 +31,7 @@ List<PostVo> postList = null;
                 <div class="row">
                 
                     <div class="col-md-6">
-                        <h2>여성의류 <input type="button" value="전체보기" onclick="location.href='category_female.jsp'"></h2>
+                        <h2>여성의류 <input type="button" value="전체보기" onclick="location.href='category.jsp?category=female'"></h2>
                         <div class="row cn-slider">
                         <%
                         // category 설정
@@ -65,7 +65,7 @@ List<PostVo> postList = null;
 								}
 								%>
                                     <div class="cn-title">
-                                        <a href="content_<%=category %>.jsp?postNum=<%=postVo.getId() %>&pageNum=1">
+                                        <a href="content.jsp?postNum=<%=postVo.getId() %>&pageNum=1&category=<%=category %>">
                                         <%=postVo.getTitle() %>
                                         </a>
                                     </div>
@@ -78,7 +78,7 @@ List<PostVo> postList = null;
                     </div>
                     
 					<div class="col-md-6">
-                        <h2>액세서리 <input type="button" value="전체보기" onclick="location.href='category_accessory.jsp'"></h2>
+                        <h2>액세서리 <input type="button" value="전체보기" onclick="location.href='category.jsp?category=accessory'"></h2>
                         <div class="row cn-slider">
                         <%
                         // category 설정
@@ -112,7 +112,7 @@ List<PostVo> postList = null;
 								}
 								%>
                                     <div class="cn-title">
-                                        <a href="content_<%=category %>.jsp?postNum=<%=postVo.getId() %>&pageNum=1">
+                                        <a href="content.jsp?postNum=<%=postVo.getId() %>&pageNum=1&category=<%=category %>">
                                         <%=postVo.getTitle() %>
                                         </a>
                                     </div>
@@ -134,7 +134,7 @@ List<PostVo> postList = null;
                 <div class="row">
                 
                     <div class="col-md-6">
-                        <h2>남성의류 <input type="button" value="전체보기" onclick="location.href='category_male.jsp'"></h2>
+                        <h2>남성의류 <input type="button" value="전체보기" onclick="location.href='category.jsp?category=male'"></h2>
                         <div class="row cn-slider">
                         <%
                         // category 설정
@@ -168,7 +168,7 @@ List<PostVo> postList = null;
 								}
 								%>
                                     <div class="cn-title">
-                                        <a href="content_<%=category %>.jsp?postNum=<%=postVo.getId() %>&pageNum=1">
+                                        <a href="content.jsp?postNum=<%=postVo.getId() %>&pageNum=1&category=<%=category %>">
                                         <%=postVo.getTitle() %>
                                         </a>
                                     </div>
@@ -181,7 +181,7 @@ List<PostVo> postList = null;
                     </div>
                     
 					<div class="col-md-6">
-                        <h2>디지털/가전 <input type="button" value="전체보기" onclick="location.href='category_digital.jsp'"></h2>
+                        <h2>디지털/가전 <input type="button" value="전체보기" onclick="location.href='category.jsp?category=digital'"></h2>
                         <div class="row cn-slider">
                         <%
                         // category 설정
@@ -215,7 +215,7 @@ List<PostVo> postList = null;
 								}
 								%>
                                     <div class="cn-title">
-                                        <a href="content_<%=category %>.jsp?postNum=<%=postVo.getId() %>&pageNum=1">
+                                        <a href="content.jsp?postNum=<%=postVo.getId() %>&pageNum=1&category=<%=category %>">
                                         <%=postVo.getTitle() %>
                                         </a>
                                     </div>

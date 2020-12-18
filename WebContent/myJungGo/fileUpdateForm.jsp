@@ -109,7 +109,7 @@ span#delFile {
 							<td colspan="2">
 								<input type="submit" value="파일 수정하기">
 								<input type="reset" value="다시쓰기">
-								<input type="button" value="글목록" onclick="location.href='content_<%=category%>'">
+								<input type="button" value="글목록" onclick="location.href='category.jsp?pageNum=<%=pageNum %>&category=<%=category %>'">
 							</td>
 						</tr>
 					</table>
