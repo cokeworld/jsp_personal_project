@@ -55,6 +55,25 @@ public class PostDao {
 		}
 	} // addPost
 	
+	//deletePost
+	public void deletePost(int num) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "";
+		try {
+			con = JdbcUtils.getConnection();
+			sql = "DELETE FROM product WHERE id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtils.close(con, pstmt);
+		}
+	} //deletePost
+	
+	// deleteALl
 	public void deleteAll() {
 		Connection con = null;
 		PreparedStatement pstmt = null;

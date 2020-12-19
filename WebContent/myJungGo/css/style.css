@@ -1374,8 +1374,13 @@ button.btn:hover {
 
 /* tk */
 .category_title {
+    display: flex;
     font-size: 30px;
     font-weight: bold;
+}
+
+.title_dropdown {
+	font-size: 20px;
 }
 
 .title_button {

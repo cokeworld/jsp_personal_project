@@ -64,12 +64,14 @@ String id = (String) session.getAttribute("id");
 
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav mr-auto">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="index.jsp" class="nav-item nav-link active">Home</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">카테고리</a>
                         <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item">Sub Item 1</a>
-                            <a href="#" class="dropdown-item">Sub Item 2</a>
+                            <a href="category.jsp?category=female" class="dropdown-item">여성의류</a>
+                            <a href="category.jsp?category=accessory" class="dropdown-item">액세서리</a>
+                            <a href="category.jsp?category=male" class="dropdown-item">남성의류</a>
+                            <a href="category.jsp?category=digital" class="dropdown-item">디지털/가전</a>
                         </div>
                     </div>
                     <a href="single-page.html" class="nav-item nav-link">Single Page</a>

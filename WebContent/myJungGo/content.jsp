@@ -85,7 +85,7 @@ table {
 		<tr>
 			<td colspan="4">
 				<input type="button" value="글수정" onclick="location.href='fileUpdateForm.jsp?num=<%=postNum %>&pageNum=<%=pageNum %>&category=<%=category %>'"> 
-				<input type="button" value="글삭제" onclick="location.href='deleteForm.jsp?num=<%=postNum %>&pageNum=<%=pageNum %>'">
+				<input type="button" value="글삭제" onclick="location.href='deleteForm.jsp?num=<%=postNum %>&pageNum=<%=pageNum %>&category=<%=category %>'">
 <%-- 				<input type="button" value="답글쓰기" onclick="location.href='reWriteForm.jsp?reRef=<%=postVo.getReRef() %>&reLev=<%=postVo.getReLev() %>&reSeq=<%=postVo.getReSeq() %>&pageNum=<%=pageNum %>'"> --%>
 				<input type="button" value="글목록" onclick="location.href='category.jsp?pageNum=<%=pageNum %>&category=<%=category %>'">
 			</td>

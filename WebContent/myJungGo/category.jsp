@@ -70,6 +70,15 @@ if (count > 0) {
 				<div class="category_row d-flex justify-content-between">
 					<div class="category_title">
 						<%=categoryKoreanName %>
+       			     	<div class="nav-item dropdown title_dropdown">
+	                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">바로가기</a>
+	                        <div class="dropdown-menu">
+	                            <a href="category.jsp?category=female" class="dropdown-item">여성의류</a>
+	                            <a href="category.jsp?category=accessory" class="dropdown-item">액세서리</a>
+	                            <a href="category.jsp?category=male" class="dropdown-item">남성의류</a>
+	                            <a href="category.jsp?category=digital" class="dropdown-item">디지털/가전</a>
+	                        </div>
+                   		</div>
 <!-- 						<a href='' class="title_button">전체보기</a> -->
 					</div>
 					<input type="button" name="btnFileUpload" value="판매하기" onclick="location.href='fileWriteForm.jsp'">
