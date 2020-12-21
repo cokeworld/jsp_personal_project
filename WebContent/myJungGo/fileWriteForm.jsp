@@ -26,24 +26,25 @@ String category = request.getParameter("category");
 						판매하기
 					</div>
 				</div>
+				<br>
 			<div class="row">
 				<br>
 				<div class="products">
 						<form action="fileWritePro.jsp" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="pageNum" value="<%=pageNum %>">
-		<table border="1">
+		<table class="table table-borderless">
 			<tr>
 				<th>판매자</th>
-				<td><input type="text" name="seller" required></td>
+				<td><input type="text" name="seller" class="form-control" required></td>
 			</tr>
 			<tr>
 				<th>패스워드</th>
-				<td><input type="password" name="passwd" required></td>
+				<td><input type="password" name="passwd" class="form-control" required></td>
 			</tr>
 			<tr>
 				<th>카테고리</th>
 				<td>
-				<select name="category" id="category-select">
+				<select name="category" id="category-select" class="form-control">
 				    <option value="female">여성의류</option>
 				    <option value="accessory">액세서리</option>
 				    <option value="male">남성의류</option>
@@ -53,23 +54,23 @@ String category = request.getParameter("category");
 			</tr>
 			<tr>
 				<th>제목</th>
-				<td><input type="text" name="title" required></td>
+				<td><input type="text" name="title" class="form-control" required></td>
 			</tr>
 			<tr>
 				<th>파일</th>
-				<td><input type="file" name="filename"></td>
+				<td><input type="file" name="filename" class="form-control"></td>
 			</tr>
 			<tr>
 				<th>가격</th>
-				<td><input type="number" name="price"></td>
+				<td><input type="number" name="price" class="form-control"></td>
 			</tr>
 			<tr>
 				<th>위치</th>
-				<td><input type="text" name="location"></td>
+				<td><input type="text" name="location" class="form-control"></td>
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><textarea rows="13" cols="40" name="description" required></textarea></td>
+				<td><textarea rows="13" cols="40" name="description" class="form-control"required></textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2">

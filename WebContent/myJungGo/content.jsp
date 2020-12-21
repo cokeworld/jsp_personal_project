@@ -43,18 +43,19 @@ table {
 						물건보기
 					</div>
 				</div>
+					<br>
 			<div class="row">
 				<br>
 				<div class="products">
 					
-			<table border="1">
+			<table class="table table-bordered">
 		<tr>
 			<th>글번호</th><td><%=postVo.getId() %></td>
 			<th>조회수</th><td><%=postVo.getView() %></td>
 		</tr>
 		<tr>
 			<th>작성자</th><td><%=postVo.getSeller() %></td>
-<%-- 			<th>작성일</th><td><%=postVo.getRegDate() %></td> --%>
+			<th>위치</th><td><%=postVo.getLocation() %></td>
 		</tr>
 		<tr>
 			<th>글제목</th><td colspan="3"><%=postVo.getTitle() %></td>

@@ -39,25 +39,26 @@ span#delFile {
 						글 수정하기
 					</div>
 				</div>
+				<br>
 		<div class="row">
 			<br>
 			<div class="products">
 				<form action="fileUpdatePro.jsp" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="pageNum" value="<%=pageNum %>">
 					<input type="hidden" name="id" value="<%=postVo.getId() %>">
-					<table border="1">
+					<table class="table table-borderless">
 						<tr>
 							<th>판매자</th>
-							<td><input type="text" name="seller" value="<%=postVo.getSeller() %>" required readonly></td>
+							<td><input type="text" name="seller" value="<%=postVo.getSeller() %> " class="form-control" required readonly></td>
 						</tr>
 						<tr>
 							<th>패스워드</th>
-							<td><input type="password" name="passwd" value="<%=postVo.getPasswd() %>"required></td>
+							<td><input type="password" name="passwd" value="<%=postVo.getPasswd() %>" class="form-control" required></td>
 						</tr>
 						<tr>
 							<th>카테고리</th>
 							<td>
-							<select name="category" id="category-select">
+							<select name="category" id="category-select" class="form-control">
 							    <option value="female">여성의류</option>
 							    <option value="accessory">액세서리</option>
 							    <option value="male">남성의류</option>
@@ -67,7 +68,7 @@ span#delFile {
 						</tr>
 						<tr>
 							<th>제목</th>
-							<td><input type="text" name="title" value="<%=postVo.getTitle() %>" required></td>
+							<td><input type="text" name="title" value="<%=postVo.getTitle() %>" class="form-control" required></td>
 						</tr>
 						<tr>
 							<th>파일</th>
@@ -86,24 +87,24 @@ span#delFile {
 							} else {
 								%>
 								<img src="img/no-image.png" width="300" height="300" alt="No Image">
-								<input type="file" name="filename">
+								<input type="file" name="filename" class="form-control">
 								<%
 							}
-							%>
+							%> 
 							</td>
 
 						</tr>
 						<tr>
 							<th>가격</th>
-							<td><input type="number" name="price" value="<%=postVo.getPrice() %>"></td>
+							<td><input type="number" name="price" value="<%=postVo.getPrice() %>" class="form-control"></td>
 						</tr>
 						<tr>
 							<th>위치</th>
-							<td><input type="text" name="location" value="<%=postVo.getLocation() %>"></td>
+							<td><input type="text" name="location" value="<%=postVo.getLocation() %>" class="form-control"></td>
 						</tr>
 						<tr>
 							<th>내용</th>
-							<td><textarea rows="13" cols="40" name="description" required><%=postVo.getDescription() %></textarea></td>
+							<td><textarea rows="13" cols="40" name="description" class="form-control" required><%=postVo.getDescription() %></textarea></td>
 						</tr>
 						<tr>
 							<td colspan="2">
