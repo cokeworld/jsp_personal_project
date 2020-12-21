@@ -1,5 +1,7 @@
 package com.vo;
 
+import java.sql.Timestamp;
+
 public class PostVo {
 	private int id;
 	private String title;
@@ -11,14 +13,52 @@ public class PostVo {
 	private String passwd;
 	private String file;
 	private String category;
+	private Timestamp regDate;
+	private int reRef;
+	private int reLev;
+	private int reSeq;
 	
-	
-	
-	public String getCategory() {
-		return category;
+	public int getId() {
+		return id;
 	}
-	public void setCategory(String category) {
-		this.category = category;
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public int getView() {
+		return view;
+	}
+	public void setView(int view) {
+		this.view = view;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getSeller() {
+		return seller;
+	}
+	public void setSeller(String seller) {
+		this.seller = seller;
 	}
 	public String getPasswd() {
 		return passwd;
@@ -32,56 +72,44 @@ public class PostVo {
 	public void setFile(String file) {
 		this.file = file;
 	}
-	public int getId() {
-		return id;
+	public String getCategory() {
+		return category;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setCategory(String category) {
+		this.category = category;
 	}
-	public String getTitle() {
-		return title;
+	public Timestamp getRegDate() {
+		return regDate;
 	}
-	public int getPrice() {
-		return price;
+	public void setRegDate(Timestamp regDate) {
+		this.regDate = regDate;
 	}
-	public int getView() {
-		return view;
+	public int getReRef() {
+		return reRef;
 	}
-	public String getLocation() {
-		return location;
+	public void setReRef(int reRef) {
+		this.reRef = reRef;
 	}
-	public String getDescription() {
-		return description;
+	public int getReLev() {
+		return reLev;
 	}
-	public String getSeller() {
-		return seller;
+	public void setReLev(int reLev) {
+		this.reLev = reLev;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public int getReSeq() {
+		return reSeq;
 	}
-	public void setPrice(int price) {
-		this.price = price;
+	public void setReSeq(int reSeq) {
+		this.reSeq = reSeq;
 	}
-	public void setView(int view) {
-		this.view = view;
-	}
-	public void setLocation(String location) {
-		this.location = location;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public void setSeller(String seller) {
-		this.seller = seller;
-	}
+	
 	@Override
 	public String toString() {
 		return "PostVo [id=" + id + ", title=" + title + ", price=" + price + ", view=" + view + ", location="
 				+ location + ", description=" + description + ", seller=" + seller + ", passwd=" + passwd + ", file="
-				+ file + "]";
+				+ file + ", category=" + category + ", regDate=" + regDate + ", reRef=" + reRef + ", reLev=" + reLev
+				+ ", reSeq=" + reSeq + "]";
 	}
-	
-
 	
 	
 	

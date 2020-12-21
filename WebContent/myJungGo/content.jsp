@@ -7,6 +7,24 @@
 	// category 설정
 	String category = request.getParameter("category");
 
+	//category 한글 이름 설정
+	String categoryKoreanName = "";
+	
+	switch (category) {
+	case "female": 
+		categoryKoreanName = "여성의류";
+		break;
+	case "accessory": 
+		categoryKoreanName = "액세서리";
+		break;
+	case "male": 
+		categoryKoreanName = "남성의류";
+		break;
+	case "digital": 
+		categoryKoreanName = "디지털/가전";
+		break;
+	}
+
 	// 파라미터값 int num, String pageNum 가져오기
 	int postNum = Integer.parseInt(request.getParameter("postNum")); // 글번호
 	String pageNum = request.getParameter("pageNum"); // 페이지번호
@@ -51,7 +69,11 @@ table {
 			<table class="table table-bordered">
 		<tr>
 			<th>글번호</th><td><%=postVo.getId() %></td>
+			<th>작성일</th><td><%=postVo.getRegDate() %></td>
+		</tr>
+			<th>카테고리</th><td><%=categoryKoreanName %></td>
 			<th>조회수</th><td><%=postVo.getView() %></td>
+		<tr>
 		</tr>
 		<tr>
 			<th>작성자</th><td><%=postVo.getSeller() %></td>

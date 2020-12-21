@@ -30,9 +30,9 @@ public class PostDao {
 		try {
 			con = JdbcUtils.getConnection();
 			
-			sql  = "INSERT INTO product ";
-			sql += "(id, title, price, view, location, description, seller, passwd, file, category) ";
-			sql += "VALUES (?, ?, ?, ?, ?, ?, ?, ? ,?, ?) ";
+			sql  = "INSERT INTO post ";
+			sql += "(id, title, price, view, location, description, seller, passwd, file, category, regDate, reRef, reLev, reSeq) ";
+			sql += "VALUES (?, ?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?) ";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, postVo.getId());
@@ -45,6 +45,10 @@ public class PostDao {
 			pstmt.setString(8, postVo.getPasswd());
 			pstmt.setString(9, postVo.getFile());
 			pstmt.setString(10, postVo.getCategory());
+			pstmt.setTimestamp(11, postVo.getRegDate());
+			pstmt.setInt(12, postVo.getReRef());
+			pstmt.setInt(13, postVo.getReLev());
+			pstmt.setInt(14, postVo.getReSeq());
 
 			pstmt.executeUpdate();
 			
@@ -62,7 +66,7 @@ public class PostDao {
 		String sql = "";
 		try {
 			con = JdbcUtils.getConnection();
-			sql = "DELETE FROM product WHERE id = ?";
+			sql = "DELETE FROM post WHERE id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
@@ -81,7 +85,7 @@ public class PostDao {
 		try {
 			con = JdbcUtils.getConnection();
 			
-			String sql = "DELETE FROM product";
+			String sql = "DELETE FROM post";
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.executeUpdate();
@@ -101,7 +105,7 @@ public class PostDao {
 		try {
 			con = JdbcUtils.getConnection();
 			
-			sql = "DELETE FROM product";
+			sql = "DELETE FROM post";
 			sql += "WHERE category = ?";
 					
 			pstmt = con.prepareStatement(sql);
@@ -128,7 +132,7 @@ public class PostDao {
 			con = JdbcUtils.getConnection();
 			
 			sql  = "SELECT * ";
-			sql += "FROM product ";
+			sql += "FROM post ";
 			sql += "ORDER BY id DESC ";
 			sql += "LIMIT ?, ? ";
 			
@@ -150,6 +154,10 @@ public class PostDao {
 				postVo.setPasswd(rs.getString("passwd"));
 				postVo.setFile(rs.getString("file"));
 				postVo.setCategory(rs.getString("category"));
+				postVo.setRegDate(rs.getTimestamp("regDate"));
+				postVo.setReRef(rs.getInt("reRef"));
+				postVo.setReLev(rs.getInt("reLev"));
+				postVo.setReSeq(rs.getInt("reSeq"));
 				list.add(postVo);
 			}
 		} catch (Exception e) {
@@ -172,7 +180,7 @@ public class PostDao {
 			con = JdbcUtils.getConnection();
 			
 			sql  = "SELECT * ";
-			sql += "FROM product ";
+			sql += "FROM post ";
 			sql += "WHERE category = ? ";
 			sql += "ORDER BY id DESC ";
 			sql += "LIMIT ?, ?";
@@ -198,6 +206,10 @@ public class PostDao {
 				postVo.setPasswd(rs.getString("passwd"));
 				postVo.setFile(rs.getString("file"));
 				postVo.setCategory(rs.getString("category"));
+				postVo.setRegDate(rs.getTimestamp("regDate"));
+				postVo.setReRef(rs.getInt("reRef"));
+				postVo.setReLev(rs.getInt("reLev"));
+				postVo.setReSeq(rs.getInt("reSeq"));
 				list.add(postVo);
 			}
 		} catch (Exception e) {
@@ -218,7 +230,7 @@ public class PostDao {
 		try {
 			con = JdbcUtils.getConnection();
 			
-			sql  = "UPDATE product ";
+			sql  = "UPDATE post ";
 			sql += "SET title = ?, price = ?, location = ?, description = ?, passwd = ? ,file = ?, category = ? ";
 			sql += "WHERE id = ? ";
 			
@@ -230,7 +242,6 @@ public class PostDao {
 			pstmt.setString(5, postVo.getPasswd());
 			pstmt.setString(6, postVo.getFile());
 			pstmt.setString(7, postVo.getCategory());
-			
 			pstmt.setInt(8, postVo.getId());
 			pstmt.executeUpdate();
 			
@@ -254,7 +265,7 @@ public class PostDao {
 			con = JdbcUtils.getConnection();
 			
 			sql  = "SELECT IFNULL(MAX(id), 0) + 1 AS next_num ";
-			sql += "FROM product";
+			sql += "FROM post";
 			
 			pstmt = con.prepareStatement(sql);
 			
@@ -284,7 +295,7 @@ public class PostDao {
 		try {
 			con = JdbcUtils.getConnection();
 			
-			sql = "SELECT COUNT(*) FROM product";
+			sql = "SELECT COUNT(*) FROM post";
 //			sql += "WHERE category = ?";
 			
 			pstmt = con.prepareStatement(sql);
@@ -313,7 +324,7 @@ public class PostDao {
 		try {
 			con = JdbcUtils.getConnection();
 			
-			sql  = "UPDATE product ";
+			sql  = "UPDATE post ";
 			sql += "SET view = view + 1 ";
 			sql += "WHERE id = ? ";
 			
@@ -341,7 +352,7 @@ public class PostDao {
 		try {
 			con = JdbcUtils.getConnection();
 			
-			sql = "SELECT * FROM product ";
+			sql = "SELECT * FROM post ";
 			sql += "WHERE id = ?";
 			
 			pstmt = con.prepareStatement(sql);
@@ -362,6 +373,10 @@ public class PostDao {
 				postVo.setPasswd(rs.getString("passwd"));
 				postVo.setFile(rs.getString("file"));
 				postVo.setCategory(rs.getString("category"));
+				postVo.setRegDate(rs.getTimestamp("regDate"));
+				postVo.setReRef(rs.getInt("reRef"));
+				postVo.setReLev(rs.getInt("reLev"));
+				postVo.setReSeq(rs.getInt("reSeq"));
 				
 			}
 		} catch (Exception e) {

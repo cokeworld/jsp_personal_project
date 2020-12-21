@@ -31,18 +31,19 @@ table {
 						글삭제
 					</div>
 				</div>
+				<br>				
 			<div class="row">
-				<br>
 				<div class="products">
 					
 	<form action="deletePro.jsp" method="post" id="frm">
 		<input type="hidden" name="pageNum" value="<%=pageNum %>">
 		<input type="hidden" name="num" value="<%=num %>">
 		<input type="hidden" name="category" value="<%=category %>">
-		<table border="1">
+		<table class="table table-borderless">
 			<tr>
 				<th>패스워드</th>
-				<td><input type="password" name="passwd" required></td>
+				<td><input type="password" name="passwd" class="form-control" required></td>
+				
 			</tr>
 			<tr>
 				<td colspan="2">

@@ -35,6 +35,10 @@ MultipartRequest multi = new MultipartRequest(
 // post 파라미터값 한글처리는 위에 생성자에서 처리하기 때문에 할필요 없음!
 //request.setCharacterEncoding("utf-8");
 
+
+// 카테고리 받아오기
+String category = multi.getParameter("category");
+
 // VO 객체 준비
 PostVo postVo = new PostVo();
 
@@ -61,18 +65,20 @@ PostDao postDao = PostDao.getInstance();
 int nextNum = postDao.getNextNum();
 postVo.setId(nextNum);
 
+//regDate  readcount  값 저장
+postVo.setRegDate(new Timestamp(System.currentTimeMillis()));
 postVo.setView(0);  // 조회수
 
-// // re_ref  re_lev  re_seq
-// boardVo.setReRef(nextNum); // 주글일때는 글번호가 그룹번호가 됨
-// boardVo.setReLev(0); // 주글일때는 들여쓰기 레벨이 0 (들여쓰기 없음)
-// boardVo.setReSeq(0); // 주글일때는 글그룹 내에서 순번이 0 (첫번째)
+//re_ref  re_lev  re_seq
+postVo.setReRef(nextNum); // 주글일때는 글번호가 그룹번호가 됨
+postVo.setReLev(0); // 주글일때는 들여쓰기 레벨이 0 (들여쓰기 없음)
+postVo.setReSeq(0); // 주글일때는 글그룹 내에서 순번이 0 (첫번째)
 
 // 주글 등록하기
 postDao.addPost(postVo);
 
 // 글내용 상세보기 화면 content.jsp로 이동
-response.sendRedirect("category_female.jsp");
+response.sendRedirect("category.jsp?category=" + category);
 %>
 
 
