@@ -65,7 +65,7 @@ List<PostVo> postList = null;
 								}
 								%>
                                     <div class="cn-title">
-                                        <a href="content.jsp?postNum=<%=postVo.getId() %>&pageNum=1&category=<%=category %>">
+                                        <a href="content.jsp?postNum=<%=postVo.getPostId() %>&pageNum=1&category=<%=category %>">
                                         <%=postVo.getTitle() %>
                                         </a>
                                     </div>
@@ -112,7 +112,7 @@ List<PostVo> postList = null;
 								}
 								%>
                                     <div class="cn-title">
-                                        <a href="content.jsp?postNum=<%=postVo.getId() %>&pageNum=1&category=<%=category %>">
+                                        <a href="content.jsp?postNum=<%=postVo.getPostId() %>&pageNum=1&category=<%=category %>">
                                         <%=postVo.getTitle() %>
                                         </a>
                                     </div>
@@ -168,7 +168,7 @@ List<PostVo> postList = null;
 								}
 								%>
                                     <div class="cn-title">
-                                        <a href="content.jsp?postNum=<%=postVo.getId() %>&pageNum=1&category=<%=category %>">
+                                        <a href="content.jsp?postNum=<%=postVo.getPostId() %>&pageNum=1&category=<%=category %>">
                                         <%=postVo.getTitle() %>
                                         </a>
                                     </div>
@@ -215,7 +215,7 @@ List<PostVo> postList = null;
 								}
 								%>
                                     <div class="cn-title">
-                                        <a href="content.jsp?postNum=<%=postVo.getId() %>&pageNum=1&category=<%=category %>">
+                                        <a href="content.jsp?postNum=<%=postVo.getPostId() %>&pageNum=1&category=<%=category %>">
                                         <%=postVo.getTitle() %>
                                         </a>
                                     </div>

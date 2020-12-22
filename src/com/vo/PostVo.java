@@ -3,7 +3,7 @@ package com.vo;
 import java.sql.Timestamp;
 
 public class PostVo {
-	private int id;
+	private int postId;
 	private String title;
 	private int price;
 	private int view;
@@ -19,11 +19,12 @@ public class PostVo {
 	private int reSeq;
 	private String sellerId;
 	
-	public int getId() {
-		return id;
+	
+	public int getPostId() {
+		return postId;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setPostId(int postId) {
+		this.postId = postId;
 	}
 	public String getTitle() {
 		return title;
@@ -111,7 +112,7 @@ public class PostVo {
 	}
 	@Override
 	public String toString() {
-		return "PostVo [id=" + id + ", title=" + title + ", price=" + price + ", view=" + view + ", location="
+		return "PostVo [postId=" + postId + ", title=" + title + ", price=" + price + ", view=" + view + ", location="
 				+ location + ", description=" + description + ", seller=" + seller + ", passwd=" + passwd + ", file="
 				+ file + ", category=" + category + ", regDate=" + regDate + ", reRef=" + reRef + ", reLev=" + reLev
 				+ ", reSeq=" + reSeq + ", sellerId=" + sellerId + "]";

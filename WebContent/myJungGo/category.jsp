@@ -92,7 +92,7 @@ if (count > 0) {
 
 		%>
 					<div class="product">
-						<a href='content.jsp?postNum=<%=postVo.getId() %>&pageNum=<%=pageNum %>&category=<%=category %>' class="">
+						<a href='content.jsp?postNum=<%=postVo.getPostId() %>&pageNum=<%=pageNum %>&category=<%=category %>' class="">
 							<div class="post_image">
 							<%
 							String file = postVo.getFile();

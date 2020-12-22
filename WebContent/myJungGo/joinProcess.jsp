@@ -1,3 +1,4 @@
+<%@page import="java.sql.Timestamp"%>
 <%@page import="com.dao.UserDao"%>
 <%@page import="com.vo.UserVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -12,7 +13,7 @@ request.setCharacterEncoding("utf-8");
 
 <%
 // 가입날짜 생성해서 넣기
-// memberVo.setRegDate(new Timestamp(System.currentTimeMillis()));
+userVo.setRegDate(new Timestamp(System.currentTimeMillis()));
 
 UserDao userDao = UserDao.getInstance();
 userDao.addUser(userVo);
@@ -20,7 +21,7 @@ userDao.addUser(userVo);
 
 <script>
 	alert('회원가입 완료되었습니다!');
-	location="loginForm.jsp";a
+	location="loginForm.jsp";
 </script>
 
 <%-- response.sendRedirect("loginForm.jsp"); --%>

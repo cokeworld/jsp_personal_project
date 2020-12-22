@@ -51,7 +51,7 @@ String category = multi.getParameter("category");
 PostVo postVo = new PostVo();
 
 // 파라미터값 가져와서 VO에 저장. MultipartRequest 로부터 찾음.
-postVo.setId(Integer.parseInt(multi.getParameter("id")));
+postVo.setPostId(Integer.parseInt(multi.getParameter("id")));
 postVo.setSeller(multi.getParameter("seller"));
 postVo.setPasswd(multi.getParameter("passwd"));
 postVo.setTitle(multi.getParameter("title"));

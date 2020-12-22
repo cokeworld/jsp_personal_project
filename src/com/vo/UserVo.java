@@ -3,7 +3,7 @@ package com.vo;
 import java.sql.Timestamp;
 
 public class UserVo {
-	private String id;
+	private String userId;
 	private String passwd;
 	private String name;
 	private String address;
@@ -12,11 +12,12 @@ public class UserVo {
 	private String gender;
 	private Timestamp regDate;
 	
-	public String getId() {
-		return id;
+
+	public String getUserId() {
+		return userId;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	public String getPasswd() {
 		return passwd;
@@ -62,7 +63,7 @@ public class UserVo {
 	}
 	@Override
 	public String toString() {
-		return "UserVo [id=" + id + ", passwd=" + passwd + ", name=" + name + ", address=" + address + ", email="
+		return "UserVo [userId=" + userId + ", passwd=" + passwd + ", name=" + name + ", address=" + address + ", email="
 				+ email + ", age=" + age + ", gender=" + gender + ", regDate=" + regDate + "]";
 	}
 	

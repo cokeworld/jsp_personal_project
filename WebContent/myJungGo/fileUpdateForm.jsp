@@ -58,7 +58,7 @@ span#delFile {
 			<div class="products">
 				<form action="fileUpdatePro.jsp" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="pageNum" value="<%=pageNum %>">
-					<input type="hidden" name="id" value="<%=postVo.getId() %>">
+					<input type="hidden" name="id" value="<%=postVo.getPostId() %>">
 					<table class="table table-borderless">
 						<tr>
 							<th>판매자</th>

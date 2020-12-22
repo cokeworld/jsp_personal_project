@@ -64,7 +64,7 @@ PostDao postDao = PostDao.getInstance();
 
 // 글번호 가져와서 VO에 저장
 int nextNum = postDao.getNextNum();
-postVo.setId(nextNum);
+postVo.setPostId(nextNum);
 
 //regDate  readcount  값 저장
 postVo.setRegDate(new Timestamp(System.currentTimeMillis()));

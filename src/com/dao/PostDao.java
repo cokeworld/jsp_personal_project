@@ -31,11 +31,11 @@ public class PostDao {
 			con = JdbcUtils.getConnection();
 			
 			sql  = "INSERT INTO post ";
-			sql += "(id, title, price, view, location, description, seller, passwd, file, category, regDate, reRef, reLev, reSeq, sellerId) ";
+			sql += "(postId, title, price, view, location, description, seller, passwd, file, category, regDate, reRef, reLev, reSeq, sellerId) ";
 			sql += "VALUES (?, ?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?, ?) ";
 			
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, postVo.getId());
+			pstmt.setInt(1, postVo.getPostId());
 			pstmt.setString(2, postVo.getTitle());
 			pstmt.setInt(3, postVo.getPrice());
 			pstmt.setInt(4, postVo.getView());
@@ -67,7 +67,7 @@ public class PostDao {
 		String sql = "";
 		try {
 			con = JdbcUtils.getConnection();
-			sql = "DELETE FROM post WHERE id = ?";
+			sql = "DELETE FROM post WHERE postId = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
@@ -134,7 +134,7 @@ public class PostDao {
 			
 			sql  = "SELECT * ";
 			sql += "FROM post ";
-			sql += "ORDER BY id DESC ";
+			sql += "ORDER BY postId DESC ";
 			sql += "LIMIT ?, ? ";
 			
 			pstmt = con.prepareStatement(sql);
@@ -145,7 +145,7 @@ public class PostDao {
 			
 			while (rs.next()) {
 				PostVo postVo = new PostVo();
-				postVo.setId(rs.getInt("id"));
+				postVo.setPostId(rs.getInt("postId"));
 				postVo.setTitle(rs.getString("title"));
 				postVo.setPrice(rs.getInt("price"));
 				postVo.setView(rs.getInt("view"));
@@ -184,7 +184,7 @@ public class PostDao {
 			sql  = "SELECT * ";
 			sql += "FROM post ";
 			sql += "WHERE category = ? ";
-			sql += "ORDER BY id DESC ";
+			sql += "ORDER BY postId DESC ";
 			sql += "LIMIT ?, ?";
 			
 			pstmt = con.prepareStatement(sql);
@@ -198,7 +198,7 @@ public class PostDao {
 			
 			while (rs.next()) {
 				PostVo postVo = new PostVo();
-				postVo.setId(rs.getInt("id"));
+				postVo.setPostId(rs.getInt("postId"));
 				postVo.setTitle(rs.getString("title"));
 				postVo.setPrice(rs.getInt("price"));
 				postVo.setView(rs.getInt("view"));
@@ -235,7 +235,7 @@ public class PostDao {
 			
 			sql  = "UPDATE post ";
 			sql += "SET title = ?, price = ?, location = ?, description = ?, passwd = ? ,file = ?, category = ? ";
-			sql += "WHERE id = ? ";
+			sql += "WHERE postId = ? ";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, postVo.getTitle());
@@ -245,7 +245,7 @@ public class PostDao {
 			pstmt.setString(5, postVo.getPasswd());
 			pstmt.setString(6, postVo.getFile());
 			pstmt.setString(7, postVo.getCategory());
-			pstmt.setInt(8, postVo.getId());
+			pstmt.setInt(8, postVo.getPostId());
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
@@ -267,7 +267,7 @@ public class PostDao {
 		try {
 			con = JdbcUtils.getConnection();
 			
-			sql  = "SELECT IFNULL(MAX(id), 0) + 1 AS next_num ";
+			sql  = "SELECT IFNULL(MAX(postId), 0) + 1 AS next_num ";
 			sql += "FROM post";
 			
 			pstmt = con.prepareStatement(sql);
@@ -329,7 +329,7 @@ public class PostDao {
 			
 			sql  = "UPDATE post ";
 			sql += "SET view = view + 1 ";
-			sql += "WHERE id = ? ";
+			sql += "WHERE postId = ? ";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, postNum);
@@ -356,7 +356,7 @@ public class PostDao {
 			con = JdbcUtils.getConnection();
 			
 			sql = "SELECT * FROM post ";
-			sql += "WHERE id = ?";
+			sql += "WHERE postId = ?";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, postNum);
@@ -366,7 +366,7 @@ public class PostDao {
 			if (rs.next()) {
 				postVo = new PostVo();
 				
-				postVo.setId(rs.getInt("id"));
+				postVo.setPostId(rs.getInt("postId"));
 				postVo.setTitle(rs.getString("title"));
 				postVo.setPrice(rs.getInt("price"));
 				postVo.setView(rs.getInt("view"));
@@ -395,7 +395,7 @@ public class PostDao {
 		for(int i=0; i<60; i++) {
 			PostVo postVo = new PostVo();
 			int nextNum = postDao.getNextNum();
-			postVo.setId(nextNum);
+			postVo.setPostId(nextNum);
 			postVo.setTitle("여자 다운 자켓팔아요" + i);
 			postVo.setPrice(i*100);
 			postVo.setView(0);
@@ -414,7 +414,7 @@ public class PostDao {
 		for(int i=0; i<60; i++) {
 			PostVo postVo = new PostVo();
 			int nextNum = postDao.getNextNum();
-			postVo.setId(nextNum);
+			postVo.setPostId(nextNum);
 			postVo.setTitle("스왈로브스키 목걸이 " + i);
 			postVo.setPrice(i*1000);
 			postVo.setView(0);
@@ -433,7 +433,7 @@ public class PostDao {
 		for(int i=0; i<60; i++) {
 			PostVo postVo = new PostVo();
 			int nextNum = postDao.getNextNum();
-			postVo.setId(nextNum);
+			postVo.setPostId(nextNum);
 			postVo.setTitle("나이키 바람막이 " + i +"시리즈");
 			postVo.setPrice(i*1100);
 			postVo.setView(0);
@@ -452,7 +452,7 @@ public class PostDao {
 		for(int i=0; i<60; i++) {
 			PostVo postVo = new PostVo();
 			int nextNum = postDao.getNextNum();
-			postVo.setId(nextNum);
+			postVo.setPostId(nextNum);
 			postVo.setTitle("아이폰 " + i + " Pro");
 			postVo.setPrice(i*1000);
 			postVo.setView(0);

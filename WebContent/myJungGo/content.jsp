@@ -75,7 +75,7 @@ table {
 					
 			<table class="table table-bordered">
 		<tr>
-			<th>글번호</th><td><%=postVo.getId() %></td>
+			<th>글번호</th><td><%=postVo.getPostId() %></td>
 			<th>작성일</th><td><%=postVo.getRegDate() %></td>
 		</tr>
 			<th>카테고리</th><td><%=categoryKoreanName %></td>
@@ -124,6 +124,29 @@ table {
 	<br>
 		</div>
 	</div>
+	
+	
+		<%-- start comment_container --%>
+		<div class="comment-container">
+			<div class="category_title">댓글</div>
+			<form  action="commentWritePro.jsp">
+				<input type="text" class="form-control" placeholder=<%=(sessionId.equals(""))?"로그인해주세요":"" %>><input type="submit" value="댓글달기">
+				<input type="checkbox" name="commentSecret"> <label>비밀댓글</label>
+			</form>
+			<br>
+						
+			<table class="table comment_table table-bordered">
+				<tr>
+					<th>gggg</th><td>gggg</td>
+				</tr>
+				<tr>
+					<th>글번호</th><td><%=postVo.getPostId() %></td>
+					<th>작성일</th><td><%=postVo.getRegDate() %></td>
+				</tr>
+			</table>
+		</div>
+		
+		
 	</div>
 	<br>
 	<!-- Post End-->

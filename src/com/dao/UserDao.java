@@ -18,10 +18,10 @@ public class UserDao {
 		String sql = "";
 		try {
 			con = JdbcUtils.getConnection();
-			sql = "INSERT INTO user(id, passwd, name) "
+			sql = "INSERT INTO user(userId, passwd, name) "
 					+ "VALUES(?, ? , ?)";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, userVo.getId());
+			pstmt.setString(1, userVo.getUserId());
 			pstmt.setString(2, userVo.getPasswd());
 			pstmt.setString(3, userVo.getName());
 //			pstmt.setTimestamp(4, userVo.getRegDate());
@@ -34,7 +34,7 @@ public class UserDao {
 		}
 	}
 	
-	public int checkDuplicatedId(String id) {
+	public int checkDuplicatedId(String userId) {
 		// 1 = 중복, 0 = 중복x
 		int duplication = 1;
 		
@@ -47,9 +47,9 @@ public class UserDao {
 		try {
 			con = JdbcUtils.getConnection();
 			sql = "SELECT COUNT(*) FROM user"
-					+ "WHERE id = ?";
+					+ "WHERE userId = ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
+			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				duplication = rs.getInt(1);
@@ -62,9 +62,9 @@ public class UserDao {
 		return duplication;
 	}
 	
-	public int checkUser(String id, String passwd) {
-		// 1: id passwd 인증성공
-		// 0: id 틀림
+	public int checkUser(String userId, String passwd) {
+		// 1: userId passwd 인증성공
+		// 0: userId 틀림
 		// -1: pass 틀림
 		
 		int checkCount = 0;
@@ -76,9 +76,9 @@ public class UserDao {
 		
 		try {
 			con = JdbcUtils.getConnection();
-			sql = "SELECT passwd FROM user WHERE id=?";
+			sql = "SELECT passwd FROM user WHERE userId=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
+			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -88,7 +88,7 @@ public class UserDao {
 					checkCount=-1;
 				}
 			} else {
-				// id 틀림
+				// userId 틀림
 				checkCount = 0;
 			}
 		} catch (Exception e) {
@@ -124,7 +124,7 @@ public class UserDao {
 		
 		// admin
 		UserVo vo = new UserVo();
-		vo.setId("a");
+		vo.setUserId("a");
 		vo.setPasswd("1");
 		vo.setName("관리자");
 		vo.setAddress("부산");
@@ -133,7 +133,7 @@ public class UserDao {
 		
 		for(int i = 0; i<5; i++) {
 			vo = new UserVo();
-			vo.setId("aaa" + i);
+			vo.setUserId("aaa" + i);
 			vo.setPasswd("1");
 			vo.setName("남도산" + i);
 			vo.setAddress("부산" + i);

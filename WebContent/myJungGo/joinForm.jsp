@@ -39,7 +39,7 @@ li {
         <div class="introduction">회원정보를 입력해주세요.</div>
         <div class="id">
             <i class="far fa-envelope"></i>
-            <input type="text" name="id" placeholder="아이디" required>
+            <input type="text" name="userId" placeholder="아이디" required>
             <br>
             <span id="msgId"></span>
         </div>
