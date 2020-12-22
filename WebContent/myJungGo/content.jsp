@@ -38,6 +38,7 @@
 	// 글번호에 해당하는 글 한개 가져오기
 	PostVo postVo = postDao.getPostByNum(postNum);
 
+	// sessionId, sellerId
 	String sellerId = postVo.getSeller();
 	String sessionId = (String) session.getAttribute("id");
 	if(sessionId==null) {

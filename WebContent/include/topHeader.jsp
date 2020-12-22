@@ -16,7 +16,7 @@ String id = (String) session.getAttribute("id");
             </div>
             <div class="col-md-6">
                 <div class="tb-menu">
-                    <a href="">다른 포트폴리오 보러가기</a>
+                    <a href="https://cokeworld.github.io/Portfolio/">다른 포트폴리오 보러가기</a>
                 </div>
             </div>
         </div>
@@ -74,8 +74,8 @@ String id = (String) session.getAttribute("id");
                             <a href="category.jsp?category=digital" class="dropdown-item">디지털/가전</a>
                         </div>
                     </div>
-                    <a href="single-page.html" class="nav-item nav-link">Single Page</a>
-                    <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                  	<%-- <a href="single-page.html" class="nav-item nav-link">Single Page</a>
+                    <a href="contact.html" class="nav-item nav-link">Contact Us</a> --%>
                 </div>
                 <div class="login ml-auto nav-item">
                 <%
