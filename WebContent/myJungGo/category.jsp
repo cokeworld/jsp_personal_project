@@ -8,7 +8,7 @@ request.setCharacterEncoding("utf-8");
 
 // category 설정
 String category = request.getParameter("category");
-
+category = (category == null) ? "female" : category;
 // category 한글 이름 설정
 String categoryKoreanName = "";
 
@@ -81,7 +81,7 @@ if (count > 0) {
                    		</div>
 <!-- 						<a href='' class="title_button">전체보기</a> -->
 					</div>
-					<input type="button" name="btnFileUpload" value="판매하기" onclick="location.href='fileWriteForm.jsp'">
+					<input type="button" name="btnFileUpload" value="판매하기" onclick="location.href='fileWriteForm.jsp?category=<%=category %>'">
 				</div>
 			<div class="row">
 				<br>

@@ -59,10 +59,10 @@ span#delFile {
 							<th>카테고리</th>
 							<td>
 							<select name="category" id="category-select" class="form-control">
-							    <option value="female">여성의류</option>
-							    <option value="accessory">액세서리</option>
-							    <option value="male">남성의류</option>
-							    <option value="digital">디지털/가전</option>
+							    <option value="female" <%=(category.equals("female"))?"selected":"" %>>여성의류</option>
+							    <option value="accessory" <%=(category.equals("accessory"))?"selected":"" %>>액세서리</option>
+							    <option value="male" <%=(category.equals("male"))?"selected":"" %>>남성의류</option>
+							    <option value="digital" <%=(category.equals("digital"))?"selected":"" %>>디지털/가전</option>
 							</select>	
 							</td>
 						</tr>
