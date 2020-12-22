@@ -17,6 +17,7 @@ public class PostVo {
 	private int reRef;
 	private int reLev;
 	private int reSeq;
+	private String sellerId;
 	
 	public int getId() {
 		return id;
@@ -102,15 +103,18 @@ public class PostVo {
 	public void setReSeq(int reSeq) {
 		this.reSeq = reSeq;
 	}
-	
+	public String getSellerId() {
+		return sellerId;
+	}
+	public void setSellerId(String sellerId) {
+		this.sellerId = sellerId;
+	}
 	@Override
 	public String toString() {
 		return "PostVo [id=" + id + ", title=" + title + ", price=" + price + ", view=" + view + ", location="
 				+ location + ", description=" + description + ", seller=" + seller + ", passwd=" + passwd + ", file="
 				+ file + ", category=" + category + ", regDate=" + regDate + ", reRef=" + reRef + ", reLev=" + reLev
-				+ ", reSeq=" + reSeq + "]";
+				+ ", reSeq=" + reSeq + ", sellerId=" + sellerId + "]";
 	}
-	
-	
 	
 }

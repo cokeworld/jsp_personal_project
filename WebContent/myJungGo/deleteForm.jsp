@@ -5,8 +5,24 @@
 	pageEncoding="UTF-8"%>
 <%
 	String category = request.getParameter("category");
-	int num = Integer.parseInt(request.getParameter("num"));
+	int postNum = Integer.parseInt(request.getParameter("num"));
 	String pageNum = request.getParameter("pageNum");
+	
+	PostDao postDao = PostDao.getInstance();
+	PostVo postVo = postDao.getPostByNum(postNum);
+	
+	// sessionId, sellerId
+	String sellerId = postVo.getSeller();
+	String sessionId = (String) session.getAttribute("id");
+	if(sessionId==null) {
+		sessionId = "";
+	}
+
+	// 잘 못된 접근 방지
+	if(!sessionId.equals(sellerId)) {
+		response.sendRedirect("index.jsp");
+		return;
+	}
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +53,7 @@ table {
 					
 	<form action="deletePro.jsp" method="post" id="frm">
 		<input type="hidden" name="pageNum" value="<%=pageNum %>">
-		<input type="hidden" name="num" value="<%=num %>">
+		<input type="hidden" name="num" value="<%=postNum %>">
 		<input type="hidden" name="category" value="<%=category %>">
 		<table class="table table-borderless">
 			<tr>

@@ -6,7 +6,14 @@
 <% 
 String pageNum = request.getParameter("pageNum");
 String category = request.getParameter("category");
+
+String sessionId = (String) session.getAttribute("id");
+if(sessionId == null) {
+	response.sendRedirect("loginForm.jsp");
+	return;
+}
 %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,6 +39,7 @@ String category = request.getParameter("category");
 				<div class="products">
 						<form action="fileWritePro.jsp" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="pageNum" value="<%=pageNum %>">
+		<input type="hidden" name="sellerId" value="<%=sessionId %>">
 		<table class="table table-borderless">
 			<tr>
 				<th>판매자</th>

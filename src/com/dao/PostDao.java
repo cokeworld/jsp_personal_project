@@ -31,8 +31,8 @@ public class PostDao {
 			con = JdbcUtils.getConnection();
 			
 			sql  = "INSERT INTO post ";
-			sql += "(id, title, price, view, location, description, seller, passwd, file, category, regDate, reRef, reLev, reSeq) ";
-			sql += "VALUES (?, ?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?) ";
+			sql += "(id, title, price, view, location, description, seller, passwd, file, category, regDate, reRef, reLev, reSeq, sellerId) ";
+			sql += "VALUES (?, ?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?, ?) ";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, postVo.getId());
@@ -49,6 +49,7 @@ public class PostDao {
 			pstmt.setInt(12, postVo.getReRef());
 			pstmt.setInt(13, postVo.getReLev());
 			pstmt.setInt(14, postVo.getReSeq());
+			pstmt.setString(15, postVo.getSellerId());
 
 			pstmt.executeUpdate();
 			
@@ -158,6 +159,7 @@ public class PostDao {
 				postVo.setReRef(rs.getInt("reRef"));
 				postVo.setReLev(rs.getInt("reLev"));
 				postVo.setReSeq(rs.getInt("reSeq"));
+				postVo.setSellerId(rs.getString("sellerId"));
 				list.add(postVo);
 			}
 		} catch (Exception e) {
@@ -210,6 +212,7 @@ public class PostDao {
 				postVo.setReRef(rs.getInt("reRef"));
 				postVo.setReLev(rs.getInt("reLev"));
 				postVo.setReSeq(rs.getInt("reSeq"));
+				postVo.setSellerId(rs.getString("sellerId"));
 				list.add(postVo);
 			}
 		} catch (Exception e) {
@@ -377,7 +380,7 @@ public class PostDao {
 				postVo.setReRef(rs.getInt("reRef"));
 				postVo.setReLev(rs.getInt("reLev"));
 				postVo.setReSeq(rs.getInt("reSeq"));
-				
+				postVo.setSellerId(rs.getString("sellerId"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

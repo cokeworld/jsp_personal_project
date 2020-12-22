@@ -24,7 +24,7 @@
 		categoryKoreanName = "디지털/가전";
 		break;
 	}
-
+	
 	// 파라미터값 int num, String pageNum 가져오기
 	int postNum = Integer.parseInt(request.getParameter("postNum")); // 글번호
 	String pageNum = request.getParameter("pageNum"); // 페이지번호
@@ -37,6 +37,12 @@
 	
 	// 글번호에 해당하는 글 한개 가져오기
 	PostVo postVo = postDao.getPostByNum(postNum);
+
+	String sellerId = postVo.getSeller();
+	String sessionId = (String) session.getAttribute("id");
+	if(sessionId==null) {
+		sessionId = "";
+	}
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -107,8 +113,8 @@ table {
 		</tr>
 		<tr>
 			<td colspan="4">
-				<input type="button" value="글수정" onclick="location.href='fileUpdateForm.jsp?num=<%=postNum %>&pageNum=<%=pageNum %>&category=<%=category %>'"> 
-				<input type="button" value="글삭제" onclick="location.href='deleteForm.jsp?num=<%=postNum %>&pageNum=<%=pageNum %>&category=<%=category %>'">
+				<input type="button" value="글수정" <%=(sessionId.equals(sellerId))?"":"hidden" %> onclick="location.href='fileUpdateForm.jsp?num=<%=postNum %>&pageNum=<%=pageNum %>&category=<%=category %>'"> 
+				<input type="button" value="글삭제" <%=(sessionId.equals(sellerId))?"":"hidden" %> onclick="location.href='deleteForm.jsp?num=<%=postNum %>&pageNum=<%=pageNum %>&category=<%=category %>'">
 <%-- 				<input type="button" value="답글쓰기" onclick="location.href='reWriteForm.jsp?reRef=<%=postVo.getReRef() %>&reLev=<%=postVo.getReLev() %>&reSeq=<%=postVo.getReSeq() %>&pageNum=<%=pageNum %>'"> --%>
 				<input type="button" value="글목록" onclick="location.href='category.jsp?pageNum=<%=pageNum %>&category=<%=category %>'">
 			</td>

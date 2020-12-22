@@ -10,6 +10,19 @@ String category = request.getParameter("category");
 
 PostDao postDao = PostDao.getInstance();
 PostVo postVo = postDao.getPostByNum(postNum);
+
+// sessionId, sellerId
+String sellerId = postVo.getSeller();
+String sessionId = (String) session.getAttribute("id");
+if(sessionId==null) {
+	sessionId = "";
+}
+
+// 잘 못된 접근 방지
+if(!sessionId.equals(sellerId)) {
+	response.sendRedirect("index.jsp");
+	return;
+}
 %>
 <!DOCTYPE html>
 <html lang="en">

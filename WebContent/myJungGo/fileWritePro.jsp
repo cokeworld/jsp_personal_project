@@ -50,6 +50,7 @@ postVo.setPrice(Integer.parseInt(multi.getParameter("price")));
 postVo.setLocation(multi.getParameter("location"));
 postVo.setDescription(multi.getParameter("description"));
 postVo.setCategory(multi.getParameter("category"));
+postVo.setSellerId(multi.getParameter("sellerId"));
 
 // 원본파일 이름 가져오기
 System.out.println("원본파일명 : " + multi.getOriginalFileName("filename"));
