@@ -7,9 +7,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	// category 설정
-	String category = request.getParameter("category");
+	// 파라미터값 int num, String pageNum 가져오기
+	int postNum = Integer.parseInt(request.getParameter("postNum")); // 글번호
+	String pageNum = request.getParameter("pageNum"); // 페이지번호
 
+	// DAO 객체 준비
+	PostDao	postDao = PostDao.getInstance();
+	
+	// 조회수 1 증가하기
+	postDao.updatePostView(postNum);
+	
+	// 글번호에 해당하는 글 한개 가져오기
+	PostVo postVo = postDao.getPostByNum(postNum);
+	
+	// category 설정
+	String category = postVo.getCategory();
 	//category 한글 이름 설정
 	String categoryKoreanName = "";
 	
@@ -27,20 +39,6 @@
 		categoryKoreanName = "디지털/가전";
 		break;
 	}
-	
-	// 파라미터값 int num, String pageNum 가져오기
-	int postNum = Integer.parseInt(request.getParameter("postNum")); // 글번호
-	String pageNum = request.getParameter("pageNum"); // 페이지번호
-
-	// DAO 객체 준비
-	PostDao	postDao = PostDao.getInstance();
-	
-	// 조회수 1 증가하기
-	postDao.updatePostView(postNum);
-	
-	// 글번호에 해당하는 글 한개 가져오기
-	PostVo postVo = postDao.getPostByNum(postNum);
-
 	// sessionId, sellerId
 	String sellerId = postVo.getSellerId();
 	String sessionId = (String) session.getAttribute("id");
@@ -140,7 +138,7 @@ table {
 			<form class="form" action="commentWritePro.jsp">
 				<input type="text" name="commentContent" class="form-control" <%=logined ? "":"placeholder='로그인 후 댓글을 남겨주세요.' disabled" %>>
 				<input type="submit" value="댓글달기" <%=logined ? "":"disabled" %>>
-				<input type="checkbox" name="commentSecret" <%=logined ? "":"disabled" %>> <label>비밀댓글</label>
+				<input type="hidden" name="commentSecret" <%=logined ? "":"disabled" %>> <label hidden>비밀댓글</label>
 				<input type="hidden" name="postId" value="<%=postNum %>">
 				<input type="hidden" name="userId" value="<%=sessionId %>">
 				<input type="hidden" name="category" value="<%=category %>">
@@ -155,6 +153,7 @@ table {
 					<th><%=commentVo.getUserId() %></th>
 					<td><%=commentVo.getCommentContent() %></td>
 					<td><%=commentVo.getCommentDate() %></td>
+					<td><a class="commentDelete" href="commentDeletePro.jsp?commentId=<%=commentVo.getCommentId() %>&postNum=<%=postNum %>"><i class="fas fa-times"></i></a></td>
 				</tr>
 			<%
 			}

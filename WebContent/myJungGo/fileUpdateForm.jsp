@@ -6,10 +6,12 @@
 <% 
 int postNum = Integer.parseInt(request.getParameter("num"));
 String pageNum = request.getParameter("pageNum");
-String category = request.getParameter("category");
 
 PostDao postDao = PostDao.getInstance();
 PostVo postVo = postDao.getPostByNum(postNum);
+
+//category 설정
+String category = postVo.getCategory();
 
 // sessionId, sellerId
 String sellerId = postVo.getSellerId();
