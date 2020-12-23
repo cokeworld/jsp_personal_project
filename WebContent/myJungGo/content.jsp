@@ -42,7 +42,7 @@
 	PostVo postVo = postDao.getPostByNum(postNum);
 
 	// sessionId, sellerId
-	String sellerId = postVo.getSeller();
+	String sellerId = postVo.getSellerId();
 	String sessionId = (String) session.getAttribute("id");
 	if(sessionId==null) {
 		sessionId = "";
@@ -77,8 +77,6 @@ table {
 						물건보기
 					</div>
 				</div>
-					<br>
-			<div class="row">
 				<br>
 				<div class="products">
 					
@@ -92,7 +90,7 @@ table {
 		<tr>
 		</tr>
 		<tr>
-			<th>작성자</th><td><%=postVo.getSeller() %></td>
+			<th>작성자ID</th><td><%=postVo.getSellerId() %></td>
 			<th>위치</th><td><%=postVo.getLocation() %></td>
 		</tr>
 		<tr>
@@ -132,7 +130,6 @@ table {
 	</table>
 	<br>
 		</div>
-	</div>
 		<hr>
 
 		<%-- 로그인 상태 true == 로그인 상태 --%>

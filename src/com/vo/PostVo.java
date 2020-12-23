@@ -9,7 +9,7 @@ public class PostVo {
 	private int view;
 	private String location;
 	private String description;
-	private String seller;
+	private String sellerId;
 	private String passwd;
 	private String file;
 	private String category;
@@ -17,7 +17,7 @@ public class PostVo {
 	private int reRef;
 	private int reLev;
 	private int reSeq;
-	private String sellerId;
+	
 	
 	
 	public int getPostId() {
@@ -55,12 +55,6 @@ public class PostVo {
 	}
 	public void setDescription(String description) {
 		this.description = description;
-	}
-	public String getSeller() {
-		return seller;
-	}
-	public void setSeller(String seller) {
-		this.seller = seller;
 	}
 	public String getPasswd() {
 		return passwd;
@@ -113,7 +107,7 @@ public class PostVo {
 	@Override
 	public String toString() {
 		return "PostVo [postId=" + postId + ", title=" + title + ", price=" + price + ", view=" + view + ", location="
-				+ location + ", description=" + description + ", seller=" + seller + ", passwd=" + passwd + ", file="
+				+ location + ", description=" + description + ", passwd=" + passwd + ", file="
 				+ file + ", category=" + category + ", regDate=" + regDate + ", reRef=" + reRef + ", reLev=" + reLev
 				+ ", reSeq=" + reSeq + ", sellerId=" + sellerId + "]";
 	}

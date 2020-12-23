@@ -12,7 +12,7 @@ PostDao postDao = PostDao.getInstance();
 PostVo postVo = postDao.getPostByNum(postNum);
 
 // sessionId, sellerId
-String sellerId = postVo.getSeller();
+String sellerId = postVo.getSellerId();
 String sessionId = (String) session.getAttribute("id");
 if(sessionId==null) {
 	sessionId = "";
@@ -52,8 +52,6 @@ span#delFile {
 						글 수정하기
 					</div>
 				</div>
-				<br>
-		<div class="row">
 			<br>
 			<div class="products">
 				<form action="fileUpdatePro.jsp" method="post" enctype="multipart/form-data">
@@ -62,7 +60,7 @@ span#delFile {
 					<table class="table table-borderless">
 						<tr>
 							<th>판매자</th>
-							<td><input type="text" name="seller" value="<%=postVo.getSeller() %> " class="form-control" required readonly></td>
+							<td><input type="text" name="sellerId" value="<%=postVo.getSellerId() %> " class="form-control" required readonly></td>
 						</tr>
 						<tr>
 							<th>패스워드</th>
@@ -129,7 +127,6 @@ span#delFile {
 					</table>
 				</form>
 		</div>
-	</div>
 	</div>
 	</div>
 	<!-- File Form End-->

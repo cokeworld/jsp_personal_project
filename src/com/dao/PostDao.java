@@ -31,8 +31,8 @@ public class PostDao {
 			con = JdbcUtils.getConnection();
 			
 			sql  = "INSERT INTO post ";
-			sql += "(postId, title, price, view, location, description, seller, passwd, file, category, regDate, reRef, reLev, reSeq, sellerId) ";
-			sql += "VALUES (?, ?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?, ?) ";
+			sql += "(postId, title, price, view, location, description, sellerId, passwd, file, category, regDate, reRef, reLev, reSeq) ";
+			sql += "VALUES (?, ?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?) ";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, postVo.getPostId());
@@ -41,7 +41,7 @@ public class PostDao {
 			pstmt.setInt(4, postVo.getView());
 			pstmt.setString(5, postVo.getLocation());
 			pstmt.setString(6, postVo.getDescription());
-			pstmt.setString(7, postVo.getSeller());
+			pstmt.setString(7, postVo.getSellerId());
 			pstmt.setString(8, postVo.getPasswd());
 			pstmt.setString(9, postVo.getFile());
 			pstmt.setString(10, postVo.getCategory());
@@ -49,7 +49,6 @@ public class PostDao {
 			pstmt.setInt(12, postVo.getReRef());
 			pstmt.setInt(13, postVo.getReLev());
 			pstmt.setInt(14, postVo.getReSeq());
-			pstmt.setString(15, postVo.getSellerId());
 
 			pstmt.executeUpdate();
 			
@@ -151,7 +150,7 @@ public class PostDao {
 				postVo.setView(rs.getInt("view"));
 				postVo.setLocation(rs.getString("location"));
 				postVo.setDescription(rs.getString("description"));
-				postVo.setSeller(rs.getString("seller"));
+				postVo.setSellerId(rs.getString("sellerId"));
 				postVo.setPasswd(rs.getString("passwd"));
 				postVo.setFile(rs.getString("file"));
 				postVo.setCategory(rs.getString("category"));
@@ -159,7 +158,6 @@ public class PostDao {
 				postVo.setReRef(rs.getInt("reRef"));
 				postVo.setReLev(rs.getInt("reLev"));
 				postVo.setReSeq(rs.getInt("reSeq"));
-				postVo.setSellerId(rs.getString("sellerId"));
 				list.add(postVo);
 			}
 		} catch (Exception e) {
@@ -204,7 +202,7 @@ public class PostDao {
 				postVo.setView(rs.getInt("view"));
 				postVo.setLocation(rs.getString("location"));
 				postVo.setDescription(rs.getString("description"));
-				postVo.setSeller(rs.getString("seller"));
+				postVo.setSellerId(rs.getString("sellerId"));
 				postVo.setPasswd(rs.getString("passwd"));
 				postVo.setFile(rs.getString("file"));
 				postVo.setCategory(rs.getString("category"));
@@ -212,7 +210,7 @@ public class PostDao {
 				postVo.setReRef(rs.getInt("reRef"));
 				postVo.setReLev(rs.getInt("reLev"));
 				postVo.setReSeq(rs.getInt("reSeq"));
-				postVo.setSellerId(rs.getString("sellerId"));
+				
 				list.add(postVo);
 			}
 		} catch (Exception e) {
@@ -372,7 +370,7 @@ public class PostDao {
 				postVo.setView(rs.getInt("view"));
 				postVo.setLocation(rs.getString("location"));
 				postVo.setDescription(rs.getString("description"));
-				postVo.setSeller(rs.getString("seller"));
+				postVo.setSellerId(rs.getString("sellerId"));
 				postVo.setPasswd(rs.getString("passwd"));
 				postVo.setFile(rs.getString("file"));
 				postVo.setCategory(rs.getString("category"));
@@ -380,7 +378,6 @@ public class PostDao {
 				postVo.setReRef(rs.getInt("reRef"));
 				postVo.setReLev(rs.getInt("reLev"));
 				postVo.setReSeq(rs.getInt("reSeq"));
-				postVo.setSellerId(rs.getString("sellerId"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -401,7 +398,7 @@ public class PostDao {
 			postVo.setView(0);
 			postVo.setLocation("부산");
 			postVo.setDescription("여자 다운자켓 싸게 팝니다. " + i + "모델 급처요~");
-			postVo.setSeller("최미희"+i);
+			postVo.setSellerId("최미희"+i);
 			postVo.setPasswd("1");
 			postVo.setFile("sample1");
 			postVo.setCategory("female");
@@ -420,7 +417,7 @@ public class PostDao {
 			postVo.setView(0);
 			postVo.setLocation("서울");
 			postVo.setDescription(i+"개월 사용한 스왈로브스키 목걸이 " + i + "모델 급처요~");
-			postVo.setSeller("이서연"+i);
+			postVo.setSellerId("이서연"+i);
 			postVo.setPasswd("1");
 			postVo.setFile("sample2");
 			postVo.setCategory("accessory");
@@ -439,7 +436,7 @@ public class PostDao {
 			postVo.setView(0);
 			postVo.setLocation("대구");
 			postVo.setDescription("한국에 " + i +"개 있는 리미티드 에디션 " + i + "모델 급처요~");
-			postVo.setSeller("장형욱"+i);
+			postVo.setSellerId("장형욱"+i);
 			postVo.setPasswd("1");
 			postVo.setFile("sample3");
 			postVo.setCategory("male");
@@ -458,7 +455,7 @@ public class PostDao {
 			postVo.setView(0);
 			postVo.setLocation("서울");
 			postVo.setDescription("아이폰" + i + " Pro 싸게팝니다. " + "☆직거래 환영☆");
-			postVo.setSeller("박칼린"+i);
+			postVo.setSellerId("박칼린"+i);
 			postVo.setPasswd("1");
 			postVo.setFile("sample4");
 			postVo.setCategory("digital");

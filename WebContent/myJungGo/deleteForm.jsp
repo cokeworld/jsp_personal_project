@@ -12,7 +12,7 @@
 	PostVo postVo = postDao.getPostByNum(postNum);
 	
 	// sessionId, sellerId
-	String sellerId = postVo.getSeller();
+	String sellerId = postVo.getSellerId();
 	String sessionId = (String) session.getAttribute("id");
 	if(sessionId==null) {
 		sessionId = "";
@@ -53,7 +53,7 @@ table {
 					
 	<form action="deletePro.jsp" method="post" id="frm">
 		<input type="hidden" name="pageNum" value="<%=pageNum %>">
-		<input type="hidden" name="num" value="<%=postNum %>">
+		<input type="hidden" name="postNum" value="<%=postNum %>">
 		<input type="hidden" name="category" value="<%=category %>">
 		<table class="table table-borderless">
 			<tr>

@@ -34,21 +34,11 @@ if(sessionId == null) {
 					</div>
 				</div>
 				<br>
-			<div class="row">
-				<br>
 				<div class="products">
 						<form action="fileWritePro.jsp" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="pageNum" value="<%=pageNum %>">
 		<input type="hidden" name="sellerId" value="<%=sessionId %>">
 		<table class="table table-borderless">
-			<tr>
-				<th>판매자</th>
-				<td><input type="text" name="seller" class="form-control" required></td>
-			</tr>
-			<tr>
-				<th>패스워드</th>
-				<td><input type="password" name="passwd" class="form-control" required></td>
-			</tr>
 			<tr>
 				<th>카테고리</th>
 				<td>
@@ -90,7 +80,6 @@ if(sessionId == null) {
 		</table>
 	</form>
 		</div>
-	</div>
 	</div>
 	<!-- File Form End-->
 
