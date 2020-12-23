@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.vo.CommentVo"%>
+<%@page import="com.dao.CommentDao"%>
 <%@page import="com.vo.PostVo"%>
 <%@page import="java.util.List"%>
 <%@page import="com.dao.PostDao"%>
@@ -44,6 +47,12 @@
 	if(sessionId==null) {
 		sessionId = "";
 	}
+	
+	// commentList
+	List<CommentVo> commentList = null;
+	CommentDao commentDao = CommentDao.getInstance();
+	commentList = commentDao.getCommentList(postNum, 0, 9);
+	
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -124,25 +133,35 @@ table {
 	<br>
 		</div>
 	</div>
-	
-	
-		<%-- start comment_container --%>
+		<hr>
+
+		<%-- 로그인 상태 true == 로그인 상태 --%>
+		<%boolean logined = !sessionId.equals(""); %>
+		<%-- start comment 영역 --%>
 		<div class="comment-container">
 			<div class="category_title">댓글</div>
-			<form  action="commentWritePro.jsp">
-				<input type="text" class="form-control" placeholder=<%=(sessionId.equals(""))?"로그인해주세요":"" %>><input type="submit" value="댓글달기">
-				<input type="checkbox" name="commentSecret"> <label>비밀댓글</label>
+			<form class="form" action="commentWritePro.jsp">
+				<input type="text" name="commentContent" class="form-control" <%=logined ? "":"placeholder='로그인 후 댓글을 남겨주세요.' disabled" %>>
+				<input type="submit" value="댓글달기" <%=logined ? "":"disabled" %>>
+				<input type="checkbox" name="commentSecret" <%=logined ? "":"disabled" %>> <label>비밀댓글</label>
+				<input type="hidden" name="postId" value="<%=postNum %>">
+				<input type="hidden" name="userId" value="<%=sessionId %>">
+				<input type="hidden" name="category" value="<%=category %>">
 			</form>
 			<br>
 						
 			<table class="table comment_table table-bordered">
+			<%
+			for(CommentVo commentVo : commentList) {
+			%>
 				<tr>
-					<th>gggg</th><td>gggg</td>
+					<th><%=commentVo.getUserId() %></th>
+					<td><%=commentVo.getCommentContent() %></td>
+					<td><%=commentVo.getCommentDate() %></td>
 				</tr>
-				<tr>
-					<th>글번호</th><td><%=postVo.getPostId() %></td>
-					<th>작성일</th><td><%=postVo.getRegDate() %></td>
-				</tr>
+			<%
+			}
+			%>
 			</table>
 		</div>
 		
