@@ -153,7 +153,7 @@ table {
 					<th><%=commentVo.getUserId() %></th>
 					<td><%=commentVo.getCommentContent() %></td>
 					<td><%=commentVo.getCommentDate() %></td>
-					<td><a class="commentDelete" href="commentDeletePro.jsp?commentId=<%=commentVo.getCommentId() %>&postNum=<%=postNum %>"><i class="fas fa-times"></i></a></td>
+					<td><a class="<%=sessionId.equals(commentVo.getUserId())?"":"d-none " %> commentDeleteBtn" href="commentDeletePro.jsp?commentId=<%=commentVo.getCommentId() %>&postNum=<%=postNum %>"><i class="fas fa-times"></i></a></td>
 				</tr>
 			<%
 			}
@@ -174,5 +174,15 @@ table {
 
 	<%-- JavaScriptContent 영역 --%>
 	<jsp:include page="/include/jsContent.jsp" />
+	<script>
+		$('.commentDeleteBtn').click(function() {
+			var isDelete = confirm("삭제할까요?");
+			if(!isDelete) {
+				return false;
+				}
+			}); 
+		
+
+	</script>
 </body>
 </html>
