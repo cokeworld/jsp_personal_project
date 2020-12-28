@@ -6,7 +6,12 @@
 <% 
 String pageNum = request.getParameter("pageNum");
 String category = request.getParameter("category");
-
+if(pageNum == null) {
+	pageNum="";
+}
+if(category == null) {
+	category="";
+}
 String sessionId = (String) session.getAttribute("id");
 if(sessionId == null) {
 	response.sendRedirect("loginForm.jsp");

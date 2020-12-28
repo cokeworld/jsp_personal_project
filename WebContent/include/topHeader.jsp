@@ -74,6 +74,7 @@ String id = (String) session.getAttribute("id");
                             <a href="category.jsp?category=digital" class="dropdown-item">디지털/가전</a>
                         </div>
                     </div>
+                    <a href="fileWriteForm.jsp" class="nav-item nav-link active">판매하기</a>
                   	<%-- <a href="single-page.html" class="nav-item nav-link">Single Page</a>
                     <a href="contact.html" class="nav-item nav-link">Contact Us</a> --%>
                 </div>
