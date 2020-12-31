@@ -162,10 +162,6 @@ public class CommentDao {
 	// main method
 	public static void main(String[] args) {
 		CommentDao dao = CommentDao.getInstance();
-		List<CommentVo> list = dao.getCommentList(252, 0, 9);
-		for(CommentVo vo : list) {
-			System.out.println(vo.getCommentId());
-		}
 	}
 	
 }

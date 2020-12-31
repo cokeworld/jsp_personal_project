@@ -472,7 +472,6 @@ public class PostDao {
 		PostDao postDao = new PostDao();
 		int count = postDao.getPostsCount();
 		
-		postDao.deleteAll();	
 		// makeTestSamples(postDao);
 		
 	} // main method
